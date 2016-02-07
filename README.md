@@ -34,7 +34,7 @@ You can Done This Follow Option With PerisanDT :
   GenerateDates.getyourDate(dateString)
 ````
 
-- [x] get Month With Letters and digit format Woth **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از اریخ مورد نظر شما
+- [x] get Month With Letters and digit format With **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از اریخ مورد نظر شما
 ```java
   CurrentDate currentDate = new CurrentDate();
         TextElemet.setText(
