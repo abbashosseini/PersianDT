@@ -11,7 +11,7 @@ You can Done This Follow Option With PerisanDT :
 * you can get Time in **Ago** format like this **a year ago** / می توان تاریخ را به صورت **۱ سال پیش** نشان داد
 * You Can Get Name of day of the week form **any** Date like SunDay / می توان نام روز هر تاریخ را نشان داد مانند : یکشنبه
 * You can get Date With _MonthName_ Like This **2016 Jun 1** / می توان ناریخ را همراه با نام ماه نشان داد مانند : **۱۳۹۴ بهمن ۱**
-* Yout can get dates compelete in _digit_ format like this **2016/01/01** / می توان کامل عددی نشان داد مانند **۱۳۰۴/۱۱/۰۱**
+* Yout can get dates compelete in _digit_ format like this **2016/01/01** / می9توان کامل عددی نشان داد مانند **۱۳۹۴/۱۱/۰۱**
 
 #### ScreenShot :
 
