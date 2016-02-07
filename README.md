@@ -22,7 +22,7 @@ You can Done This Follow Option With PerisanDT :
 
 #### use it :
 
-- [x] get _day_ of week **name** / گرفتن نام روز در همفته از تاریخ مورد نظر شما
+- [x] get _day_ of week **name** / گرفتن نام روز هفته از تاریخ مورد نظر شما
 
 ```java
   CurrentDate.getDay(dateString)
@@ -34,7 +34,7 @@ You can Done This Follow Option With PerisanDT :
   GenerateDates.getyourDate(dateString)
 ````
 
-- [x] get Month With Letters and digit format With **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از اریخ مورد نظر شما
+- [x] get Month With Letters and digit format With **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از تاریخ مورد نظر شما
 ```java
   CurrentDate currentDate = new CurrentDate();
         TextElemet.setText(
