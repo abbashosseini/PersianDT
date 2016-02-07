@@ -1,6 +1,6 @@
 # PersianDT
->Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi). the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any library can do this /
->این کتابخانه برای تبدیل تاریخ میلادی به  شمسی  است . این رو نوشتم چون من نیاز داشتم ولی پیدا نکردم حداقل تا انجای که جستجو کردم همچین کتابخانه ای نیست .
+>Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi). the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any  /
+>این کتابخانه برای تبدیل تاریخ میلادی به  شمسی  است . این رو نوشتم چون من نیاز داشتم ولی پیدا نکردم حداقل تا انجای که جستجو کردم .
 
 #### About :
 
