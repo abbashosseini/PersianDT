@@ -1,16 +1,17 @@
 # PersianDT
-Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi).
+>Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi). the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any library can do this /
+>این کتابخانه برای تبدیل تاریخ میلادی به  شمسی  است . این رو نوشتم چون من نیاز داشتم ولی پیدا نکردم حداقل تا انجای که جستجو کردم همچین کتابخانه ای نیست .
 
 #### About :
 
-in this small library you can easily work with EnglishDate and Display for **users** more _Readable_ dates .
+in this small library you can easily work with EnglishDate and Display for **users** more _Readable_ dates  .
 
 You can Done This Follow Option With PerisanDT :
 
-* you can get Time in **Ago** format like this **a year ago**
-* You Can You Get name Day of week **any** Date .
-* You can get Date With _MonthName_ Like This **1394 bahman 1**.
-* Yout can get dates compelete in _digit_ format like this **1394/11/1**.
+* you can get Time in **Ago** format like this **a year ago** / می توان تاریخ را به صورت **۱ سال پیش** نشان داد
+* You Can Get Name of day of the week form **any** Date like SunDay / می توان نام روز هر تاریخ را نشان داد مانند : یکشنبه
+* You can get Date With _MonthName_ Like This **2016 Jun 1** / می توان ناریخ را همراه با نام ماه نشان داد مانند : **۱۳۹۴ بهمن ۱**
+* Yout can get dates compelete in _digit_ format like this **2016/01/01** / می توان کامل عددی نشان داد مانند **۱۳۰۴/۱۱/۰۱**
 
 #### ScreenShot :
 
@@ -21,29 +22,29 @@ You can Done This Follow Option With PerisanDT :
 
 #### use it :
 
-- [x] get _day_ of week **name**
+- [x] get _day_ of week **name** / گرفتن نام روز در همفته از تاریخ مورد نظر شما
 
 ```java
-  CurrentDate.getDay(date)
+  CurrentDate.getDay(dateString)
 ````
 
-- [x] get date _compelete_ in **digit** format 
+- [x] get date _compelete_ in **digit** format  / گرفتن تاریخ شمسی و عددی از تاریخ مورد نظر شما
 
 ```java
-  GenerateDates.getyourDate(date)
+  GenerateDates.getyourDate(dateString)
 ````
 
-- [x] get Month With Letters and digit format Woth **Example**. :
+- [x] get Month With Letters and digit format Woth **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از اریخ مورد نظر شما
 ```java
   CurrentDate currentDate = new CurrentDate();
         TextElemet.setText(
                 currentDate.getdateWithMonthLetters(
-                        GenerateDates.getyourDate(date)
+                        GenerateDates.getyourDate(dateString)
                 )
         );
 ````
 
-- [x] get current Date :
+- [x] get current Date  / گرقتن تاریخ فعلی از سیستم عامل
 
 ```java
 
