@@ -1,4 +1,4 @@
-# PersianDT
+# PersianDT [![](https://jitpack.io/v/abbashosseini/PersianDT.svg)](https://jitpack.io/#abbashosseini/PersianDT)
 >Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi). the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any  /
 >این کتابخانه برای تبدیل تاریخ میلادی به  شمسی  است . این رو نوشتم چون من نیاز داشتم ولی پیدا نکردم حداقل تا انجای که جستجو کردم .
 
@@ -55,6 +55,51 @@ You can Done This Follow Option With PerisanDT :
                 )
         );
 ````
+#### Gradle - installing / نصب :
+
+* Add it in your root build.gradle :
+
+```gradle
+
+	allprojects {
+		repositories {
+			maven { url "https://jitpack.io" }
+		}
+	}
+
+```
+* . Add the dependency
+
+
+```gradle
+
+dependencies {
+	        compile 'com.github.abbashosseini:PersianDT:-SNAPSHOT'
+	}
+
+```
+
+####Maven :
+
+```xml
+
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+```xml
+
+<dependency>
+    <groupId>com.github.abbashosseini</groupId>
+    <artifactId>PersianDT</artifactId>
+    <version>-SNAPSHOT</version>
+</dependency>
+
+```
+
 
 ###License
 
