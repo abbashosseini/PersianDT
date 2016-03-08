@@ -69,7 +69,7 @@ You can Done This Follow Option With PerisanDT :
 
 ````
 
-# if you are need `result` flow this 
+## if you are need `result` follow this steps:
 
 #### get Day from dates:
 
