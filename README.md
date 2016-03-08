@@ -62,14 +62,72 @@ You can Done This Follow Option With PerisanDT :
 
 ```java
 
-	
         PersianDT
                 .Instance()
                 .Current(" {DATE}")
                 .into(Textview, Current.Job.WithDigit);
 
-
 ````
+
+# if you are need `result` flow this 
+
+#### get Day from dates:
+
+
+```java
+  	
+  	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .getDay(); // Day
+  
+  
+````
+
+
+#### get persian date result and what ever:
+
+
+```java
+	
+	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .getCalendar(); // PersianDate
+  
+  
+````
+
+
+### get current dates compelete `digit` result:
+
+
+```java
+  	
+  	
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .withDigit(); //just Digit
+  
+  
+````
+
+
+### get current date mix it with `Letters`:
+
+
+```java
+  	
+
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .withLetter(); // MonthName
+  
+  
+````
+
 #### Gradle - installing :
 
 * Add it in your root build.gradle :
