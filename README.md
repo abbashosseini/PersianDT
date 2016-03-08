@@ -134,11 +134,11 @@ You can Done This Follow Option With PerisanDT :
 
 ```gradle
 
-	allprojects {
-		repositories {
+	repositories {
 			maven { url "https://jitpack.io" }
 		}
 	}
+	
 
 ```
 * . Add the dependency
@@ -146,31 +146,9 @@ You can Done This Follow Option With PerisanDT :
 
 ```gradle
 
-dependencies {
-	        compile 'com.github.abbashosseini:PersianDT:-SNAPSHOT'
+	dependencies {
+	        compile 'com.github.abbashosseini:PersianDT:v1.0.0'
 	}
-
-```
-
-####Maven :
-
-```xml
-
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-```xml
-
-<dependency>
-    <groupId>com.github.abbashosseini</groupId>
-    <artifactId>PersianDT</artifactId>
-    <version>-SNAPSHOT</version>
-</dependency>
-
 ```
 
 #OR
