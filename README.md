@@ -100,6 +100,23 @@ dependencies {
 
 ```
 
+#OR
+
+######i can't put it in JCenter / Bintary Right now ! so
+
+Add aar file locally :
+
+1. [Download](https://github.com/abbashosseini/PersianDT/blob/master/persian-time-release.aar?raw=true) AAR File .
+2. go to file > New Module > Import .JAR or .AAR Package
+3. Imported and in dependencies add :
+
+```gradle 
+
+dependencies {
+    compile project(':persian-time-release')
+}
+
+```
 
 ###License
 
