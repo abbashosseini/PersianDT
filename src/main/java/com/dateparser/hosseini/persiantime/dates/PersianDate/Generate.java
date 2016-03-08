@@ -1,35 +1,142 @@
 package com.dateparser.hosseini.persiantime.dates.PersianDate;
 
+
+/*
+ * Copyright (C) 2015 Abbashosseini
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import android.widget.TextView;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class GenerateDates {
+public class Generate extends Postion{
 
-    private class SolarCalendar {
+    public enum Task{
+        DAY,
+        DATE
+    }
+
+    public Generate(String date, String sentence) {
+        super(date, sentence);
+    }
+
+    public String getCalendar() {
+
+        Generate util = new Generate(super.getDate(), super.getSentence());
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Date date;
+        try {
+            date = format.parse(super.getDate());
+        } catch (ParseException e) {
+            throw new IllegalAccessError("Date is not valid !");
+        }
+
+        CCalendar sc = util.new CCalendar(date);
+
+        return String.valueOf(sc.year) + "/" + String.format(Locale.ENGLISH, "%02d",
+                sc.month) + "/" + String.format(Locale.ENGLISH, "%02d", sc.date);
+    }
+
+    public String getDay(){
+        /*
+        get Name of day from device and translate english name to persian name.
+        */
+
+        Date calendar = new Date();
+        SimpleDateFormat JustDayofWeek = new SimpleDateFormat("EEE", Locale.ENGLISH);
+
+        if (!super.getDate().equals("")) {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            try {
+                calendar = format.parse(super.getDate());
+            } catch (ParseException ignored) {
+                throw new IllegalAccessError("is Formatted as Date really ? ");
+            }
+        }
+
+
+        String Day =  JustDayofWeek.format(calendar);
+        String dayName = "";
+        switch (Day) {
+            case "Sun":
+                dayName = "يکشنبه";
+                break;
+            case "Mon":
+                dayName = "دوشنبه";
+                break;
+            case "Tue":
+                dayName = "سه شنبه";
+                break;
+            case "Wed":
+                dayName = "چهارشنبه";
+                break;
+            case "Thu":
+                dayName = "پنج شنبه";
+                break;
+            case "Fri":
+                dayName = "جمعه";
+                break;
+            case "Sat":
+                dayName = "شنبه";
+                break;
+        }
+
+        return dayName;
+    }
+
+    public void into(TextView view,Task taskName){
+        String finalSentence = null;
+        switch (taskName){
+            case DAY:
+                finalSentence = super.Location(getDay());
+                break;
+            case DATE:
+                finalSentence = super.Location(getCalendar());
+                break;
+
+        }
+
+        view.setText(finalSentence);
+    }
+
+    protected class CCalendar {
 
         int date;
         int month;
         int year;
 
-
-        public int getDate() {
+        protected int getDate() {
             return date;
         }
 
-        public void setDate(int date) {
+
+        protected void setDate(int date) {
             this.date = date;
         }
 
-        public SolarCalendar()
+        public CCalendar()
         {
             Date MiladiDate = new Date();
             calcSolarCalendar(MiladiDate);
         }
 
-        public SolarCalendar(Date date)
+        protected CCalendar(Date date)
         {
             calcSolarCalendar(date);
         }
@@ -181,34 +288,7 @@ public class GenerateDates {
 
             }
         }
+
     }
-
-
-
-    public static String getCurrentDate() {
-        Locale loc = new Locale("en_US");
-        GenerateDates util = new GenerateDates();
-        SolarCalendar sc = util.new SolarCalendar();
-        return String.valueOf(sc.year) + "/" + String.format(loc, "%02d",
-                sc.month) + "/" + String.format(loc, "%02d", sc.date);
-    }
-
-    public static String getyourDate(String yourdate) {
-
-        GenerateDates util = new GenerateDates();
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        Date date;
-        try {
-            date = format.parse(yourdate);
-        } catch (ParseException e) {
-            throw new IllegalAccessError("Date is not valid !");
-        }
-
-        SolarCalendar sc = util.new SolarCalendar(date);
-
-        return String.valueOf(sc.year) + "/" + String.format(Locale.ENGLISH, "%02d",
-                sc.month) + "/" + String.format(Locale.ENGLISH, "%02d", sc.date);
-    }
-
 
 }

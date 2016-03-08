@@ -1,40 +1,40 @@
-package com.dateparser.hosseini.persiantime.dates;
+package com.dateparser.hosseini.persiantime.dates.PersianDate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import android.widget.TextView;
 
-/**
- * Class for human-readable, pretty date formatting
- * @author Abbas
+
+/*
+ * Copyright (C) 2015 Abbashosseini
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-public class AgoTime {
-    private Date date;
 
-    public AgoTime(Date date) {
-        this.date = date;
-    }
+public final class AgoTime extends Postion{
 
-    public static AgoTime getDate(String yourDate) throws ParseException {
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-        Date temp = format.parse(yourDate);
-
-        return new AgoTime(temp);
-
+    public AgoTime(String date, String sentence) {
+        super(date, sentence);
     }
 
     public String tostring() {
 
 
-        long	current = System.currentTimeMillis(),
-                timestamp = this.date.getTime(),
+        final long	current = System.currentTimeMillis(),
+                timestamp = getDateAsdate().getTime(),
                 diff = (current - timestamp)/1000;
 
 
-        int	amount = 0;
-        String	what = "";
+        int	amount;
+        String	what;
 
 
         if(diff > 31536000) {
@@ -74,10 +74,14 @@ public class AgoTime {
             }
             else if(what.equals("هفته") || what.equals("ماه") || what.equals("سال")) {
                 return what+ " پیش " ;
-
             }
         }
 
         return amount + " " + what + " پیش ";
     }
+
+    public void into(TextView element) {
+        element.setText(Location(tostring()));
+    }
+
 }

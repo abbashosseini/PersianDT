@@ -1,33 +1,51 @@
 package com.dateparser.hosseini.persiantime.dates.PersianDate;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.widget.TextView;
+
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+ * Copyright (C) 2015 Abbashosseini
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /**
  *  This class provide Months in letters and make it more readable
-
  *  @author  abbashosseini
  *  @version 1.0
  *  @since   3/1/2016
  */
-public class CurrentDate {
+public class Current extends Generate {
 
-    public String getdateWithMonthLetters(String getdate){
-
+    public enum Job{
+        WithDigit,
+        WithLetter
+    }
+    public Current(String date, String sentence) {
+        super(date, sentence);
+    }
+    
+    public String withLetter(){
     /*
-     *
      *  and its get string date as persian not english SO you have to
      *  first get persian date like this yyyy-MM-dd then pass it
-     *
      */
 
         Pattern pattern = Pattern.compile("^(\\d{4})\\/(\\d{1,2})\\/(\\d{1,2})$");
-        Matcher matcher = pattern.matcher(getdate);
+        Matcher matcher = pattern.matcher(withDigit());
 
         if (!matcher.find())
             throw new IllegalAccessError("Date format is not correct !");
@@ -82,50 +100,31 @@ public class CurrentDate {
 
     }
 
-    public static String getDay(String date){
-        /*
-        get Name of day from device and translate english name to persian name.
-        */
 
-        Date calendar = new Date();
-        SimpleDateFormat JustDayofWeek = new SimpleDateFormat("EEE", Locale.ENGLISH);
-
-        if (!date.equals("")) {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-            try {
-                calendar = format.parse(date);
-            } catch (ParseException ignored) {
-                throw new IllegalAccessError("is Formatted as Date really ? ");
-            }
-        }
-
-
-        String Day =  JustDayofWeek.format(calendar);
-        String dayName = "";
-        switch (Day) {
-            case "Sun":
-                dayName = "يکشنبه";
-                break;
-            case "Mon":
-                dayName = "دوشنبه";
-                break;
-            case "Tue":
-                dayName = "سه شنبه";
-                break;
-            case "Wed":
-                dayName = "چهارشنبه";
-                break;
-            case "Thu":
-                dayName = "پنج شنبه";
-                break;
-            case "Fri":
-                dayName = "جمعه";
-                break;
-            case "Sat":
-                dayName = "شنبه";
-                break;
-        }
-
-        return dayName;
+    public String withDigit() {
+        Locale loc = new Locale("en_US");
+        Generate util = new Generate(super.getDate(),  super.getSentence());
+        CCalendar sc = util.new CCalendar();
+        return String.valueOf(sc.year) + "/" + String.format(loc, "%02d",
+                sc.month) + "/" + String.format(loc, "%02d", sc.date);
     }
+
+    public void into(TextView view,Job taskName){
+        String finalSentence = null;
+
+        switch (taskName){
+            case WithDigit:
+                finalSentence = super.Location(withDigit());
+                break;
+            case WithLetter:
+                finalSentence = super.Location(withLetter());
+                break;
+        }
+
+        view.setText(finalSentence);
+
+    }
+
+
+
 }
