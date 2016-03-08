@@ -1,17 +1,18 @@
 # PersianDT [![](https://jitpack.io/v/abbashosseini/PersianDT.svg)](https://jitpack.io/#abbashosseini/PersianDT)
->Android PesianDt library its for conversion EnglishDate to Persian (Jalali/Shamsi). the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any  /
->این کتابخانه برای تبدیل تاریخ میلادی به  شمسی  است . این رو نوشتم چون من نیاز داشتم ولی پیدا نکردم حداقل تا انجای که جستجو کردم .
+> PesianDt library its for conversion English date to Persian date (Jalali/Shamsi). 
+the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any. .
 
 #### About :
 
-in this small library you can easily work with EnglishDate and Display for **users** more _Readable_ dates  .
+in this library you can easily work with English date and Display more _Readable_ dates for  **users** .
 
 You can Done This Follow Option With PerisanDT :
 
-* you can get Time in **Ago** format like this **a year ago** / می توان تاریخ را به صورت **۱ سال پیش** نشان داد
-* You Can Get Name of day of the week form **any** Date like SunDay / می توان نام روز هر تاریخ را نشان داد مانند : یکشنبه
-* You can get Date With _MonthName_ Like This **2016 Jun 1** / می توان ناریخ را همراه با نام ماه نشان داد مانند : **۱۳۹۴ بهمن ۱**
-* Yout can get dates compelete in _digit_ format like this **2016/01/01** / می9توان کامل عددی نشان داد مانند **۱۳۹۴/۱۱/۰۱**
+* you can get Time in **Ago** format like this **a year ago** .
+* You Can Get Name of day of the week form **any** Date like SunDay .
+* You can get Date generated for you like  `WithLetter` or `withDigit` : **2016 Jun 1** or **3016/01/01** .
+* Yout can now pass your dates `new Date` for example and gets Days name.
+* You Can with this `{DATE}` _markdown_ mark a `date` how you like to set place for dates in sentence.
 
 #### ScreenShot :
 
@@ -22,40 +23,112 @@ You can Done This Follow Option With PerisanDT :
 
 #### use it :
 
-- [x] get _day_ of week **name** / گرفتن نام روز هفته از تاریخ مورد نظر شما
+- [x] get _day_ of week **name** :
 
 ```java
-  CurrentDate.getDay(dateString)
+  	
+  	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .into(textView, Generate.Task.DAY);
+  
+  
 ````
 
-- [x] get date _compelete_ in **digit** format  / گرفتن تاریخ شمسی و عددی از تاریخ مورد نظر شما
+- [x] get date _compelete_ in **digit** format 
 
 ```java
-  GenerateDates.getyourDate(dateString)
+  
+  	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .into(textView, Generate.Task.DATE); //just change Enum `DAY` to `DATE`
 ````
 
-- [x] get Month With Letters and digit format With **Example** / گرفتن تاریخ شمسی همراه با نام ماه  از تاریخ مورد نظر شما
-```java
-  CurrentDate currentDate = new CurrentDate();
-        TextElemet.setText(
-                currentDate.getdateWithMonthLetters(
-                        GenerateDates.getyourDate(dateString)
-                )
-        );
-````
-
-- [x] get current Date  / گرقتن تاریخ فعلی از سیستم عامل
+- [x] get current dates `withletters`:
 
 ```java
 
-  CurrentDate currentDate = new CurrentDate();
-        TextElemet.setText(
-                currentDate.getdateWithMonthLetters(
-                        GenerateDates.getCurrentDate()
-                )
-        );
+  	
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .into(etxtView, Current.Job.WithLetter);
+        
+        
 ````
-#### Gradle - installing / نصب :
+
+- [x] get current Date `withDigit`  :
+
+```java
+
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .into(Textview, Current.Job.WithDigit);
+
+````
+
+## if you are need `result` follow this steps:
+
+#### get Day from dates:
+
+
+```java
+  	
+  	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .getDay(); // Day
+  
+  
+````
+
+
+#### get persian date result and what ever:
+
+
+```java
+	
+	PersianDT
+                .Instance()
+                .generate(date, " {DATE}")
+                .getCalendar(); // PersianDate
+  
+  
+````
+
+
+### get current dates compelete `digit` result:
+
+
+```java
+  	
+  	
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .withDigit(); //just Digit
+  
+  
+````
+
+
+### get current date mix it with `Letters`:
+
+
+```java
+  	
+
+        PersianDT
+                .Instance()
+                .Current(" {DATE}")
+                .withLetter(); // MonthName
+  
+  
+````
+
+#### Gradle - installing :
 
 * Add it in your root build.gradle :
 
