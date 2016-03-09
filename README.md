@@ -52,8 +52,8 @@ You can Done This Follow Option With PerisanDT :
   	
         PersianDT
                 .Instance()
-                .Current(" {DATE}")
-                .into(etxtView, Current.Job.WithLetter);
+                .Current(" {DATE}") 
+                .into(textView, Current.Job.WithLetter);
         
         
 ````
