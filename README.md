@@ -14,6 +14,17 @@ You can Done This Follow Option With PerisanDT :
 * Yout can now pass your dates `new Date` for example and gets Days name.
 * You Can with this `{DATE}` _markdown_ mark a `date` how you like to set place for dates in sentence.
 
+#### trick :
+
+if you donr care about `date` Object whee gonna be shows you can chose :
+
+* "" 
+* PersianDT.Location.OFF `just for aspect of code !`
+
+or any object you like.
+
+
+
 #### ScreenShot :
 
 ![Image of PerisanDT](https://github.com/abbashosseini/PersianDT/blob/master/ScreenShots/2016-02-07-013831.png)
