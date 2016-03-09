@@ -39,6 +39,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 #### use it 
 
+
 - [x] get _day_ of week **name** 
 
 ```java
@@ -85,6 +86,20 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 ````
 
+
+- [x] get Date with `Ago` format  
+
+```java
+
+        PersianDT
+        .Instance()
+        .Ago(date.toString, " {DATE}")
+        .into(textView);
+
+````
+
+
+
 > if you are need **return Value / result** follow this steps
 
 #### get Day from dates
@@ -92,10 +107,10 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 ```java
   	
-  	PersianDT
-                .Instance()
-                .generate(date, " {DATE}")
-                .getDay(); // Day
+  	String date =  PersianDT
+		                .Instance()
+		                .generate(date, " {DATE}")
+		                .getDay(); // Day
   
   
 ````
@@ -106,10 +121,10 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 ```java
 	
-	PersianDT
-                .Instance()
-                .generate(date, " {DATE}")
-                .getCalendar(); // PersianDate
+	String date =  PersianDT
+		                .Instance()
+		                .generate(date, " {DATE}")
+		                .getCalendar(); // PersianDate
   
   
 ````
@@ -121,10 +136,10 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ```java
   	
   	
-        PersianDT
-                .Instance()
-                .Current(" {DATE}")
-                .withDigit(); //just Digit
+        String date =  PersianDT
+		                .Instance()
+		                .Current(" {DATE}")
+		                .withDigit(); //just Digit
   
   
 ````
@@ -136,12 +151,25 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ```java
   	
 
-        PersianDT
-                .Instance()
-                .Current(" {DATE}")
-                .withLetter(); // MonthName
+        String date = PersianDT
+	                .Instance()
+	                .Current(" {DATE}")
+	                .withLetter(); // MonthName
   
   
+````
+
+
+
+- [x] get returnValue with `Ago` format 
+
+```java
+
+        String whatever = PersianDT
+			        .Instance()
+			        .Ago(date, " {DATE}")
+			        .tostring();
+
 ````
 
 #### Gradle - installing 
