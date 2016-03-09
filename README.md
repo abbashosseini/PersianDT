@@ -16,12 +16,17 @@ You can Done This Follow Option With PerisanDT :
 
 #### trick :
 
-if you donr care about `date` Object whee gonna be shows you can chose :
+if you dont care about `date` Object whee gonna be shows  or you dont have sentence you can choose :
 
 * "" 
 * PersianDT.Location.OFF `just for aspect of code !`
 
-or any object you like.
+instead or any object you like (any object is not extends String its `harmless dont worry )
+
+
+#### importand:
+
+if you have sentence you **have** too use `{DATE}` markdown.
 
 
 
