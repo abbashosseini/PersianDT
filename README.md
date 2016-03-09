@@ -85,7 +85,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 ````
 
-> if you are need **return Value ** / **result** follow this steps
+> if you are need **return Value / result** follow this steps
 
 #### get Day from dates
 
