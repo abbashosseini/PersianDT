@@ -2,7 +2,7 @@
 > PesianDt library its for conversion English date to Persian date (Jalali/Shamsi). 
 the reason to create **PersianDT** because i'm not finding any on the net maybe was but so far in my research not found any. .
 
-#### About :
+#### About 
 
 in this library you can easily work with English date and Display more _Readable_ dates for  **users** .
 
@@ -14,32 +14,32 @@ You can Done This Follow Option With PerisanDT :
 * Yout can now pass your dates `new Date` for example and gets Days name.
 * You Can with this `{DATE}` _markdown_ mark a `date` how you like to set place for dates in sentence.
 
-#### trick :
+#### trick 
 
 if you dont care about `date` Object whee gonna be shows  or you dont have sentence you can choose :
 
 * "" 
 * PersianDT.Location.OFF `just for aspect of code !`
 
-instead or any object you like (any object is not extends String its `harmless dont worry )
+instead or any object you like (any object is not extends String its `harmless` dont worry )
 
 
-#### importand:
+#### importand
 
 if you have sentence you **have** too use `{DATE}` markdown.
 
 
 
-#### ScreenShot :
+#### ScreenShot 
 
 ![Image of PerisanDT](https://github.com/abbashosseini/PersianDT/blob/master/ScreenShots/2016-02-07-013831.png)
 
 
 ![Image of PerisanDT](https://github.com/abbashosseini/PersianDT/blob/master/ScreenShots/2016-02-07-014243.png)
 
-#### use it :
+#### use it 
 
-- [x] get _day_ of week **name** :
+- [x] get _day_ of week **name** 
 
 ```java
   	
@@ -61,7 +61,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
                 .into(textView, Generate.Task.DATE); //just change Enum `DAY` to `DATE`
 ````
 
-- [x] get current dates `withletters`:
+- [x] get current dates `withletters`
 
 ```java
 
@@ -74,7 +74,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
         
 ````
 
-- [x] get current Date `withDigit`  :
+- [x] get current Date `withDigit`  
 
 ```java
 
@@ -85,9 +85,9 @@ if you have sentence you **have** too use `{DATE}` markdown.
 
 ````
 
-## if you are need `result` follow this steps:
+## if you are need `result` follow this steps
 
-#### get Day from dates:
+#### get Day from dates
 
 
 ```java
@@ -101,7 +101,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ````
 
 
-#### get persian date result and what ever:
+#### get persian date result and what ever
 
 
 ```java
@@ -115,7 +115,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ````
 
 
-### get current dates compelete `digit` result:
+### get current dates compelete `digit` result
 
 
 ```java
@@ -130,7 +130,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ````
 
 
-### get current date mix it with `Letters`:
+### get current date mix it with `Letters`
 
 
 ```java
@@ -144,7 +144,7 @@ if you have sentence you **have** too use `{DATE}` markdown.
   
 ````
 
-#### Gradle - installing :
+#### Gradle - installing 
 
 * Add it in your root build.gradle :
 
