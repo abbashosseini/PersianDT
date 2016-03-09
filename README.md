@@ -166,9 +166,9 @@ if you have sentence you **have** too use `{DATE}` markdown.
 ```java
 
         String whatever = PersianDT
-				        .Instance()
-				        .Ago(date, " {DATE}")
-				        .tostring();
+					        .Instance()
+					        .Ago(date, " {DATE}")
+					        .tostring();
 
 ````
 
