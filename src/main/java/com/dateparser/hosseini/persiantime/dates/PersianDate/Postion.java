@@ -62,7 +62,7 @@ public class Postion implements FindIt {
     public String Location(String word) {
 
         String FinalSentence;
-        Pattern pattern = Pattern.compile("\\{DATE\\)");
+        Pattern pattern = Pattern.compile("\\{DATE\\}");
         Matcher matcher = pattern.matcher(getSentence());
 
         if (matcher.find())
