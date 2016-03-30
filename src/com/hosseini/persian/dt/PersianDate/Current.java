@@ -88,6 +88,11 @@ public final class Current extends Config {
     }
 
 
+    public int Day() {
+        return sc.date;
+    }
+
+
     public String fullDigit() {
         return String.format(
                 loc,
@@ -118,6 +123,24 @@ public final class Current extends Config {
                 loc,
                 "%s%s%d",
                 monthName, SEPARATOR, sc.date);
+    }
+
+    public String monthName() {
+
+        String monthName = "";
+        for (Months months: Months.values())
+            if (Objects.equals(months.getMonthAsInt(), sc.month))
+                monthName = months.getMonthAsString();
+
+        return monthName;
+    }
+
+    public int monthDigit() {
+        return sc.month;
+    }
+
+    public int Year() {
+        return sc.year;
     }
 
 

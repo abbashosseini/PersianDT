@@ -21,7 +21,6 @@ package com.hosseini.persian.dt.PersianDate;
 import com.hosseini.persian.dt.PersianDate.Collections.Days;
 import com.hosseini.persian.dt.PersianDate.Collections.Months;
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
-import jdk.nashorn.internal.objects.NativeDate;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -67,6 +66,10 @@ public final class Generate extends Config {
         return String.format("%d%s%s%s%d", sc.year, SEPARATOR, findMonth(), SEPARATOR, sc.date);
     }
 
+    public int getWithMonthDigit() {
+        return sc.month;
+    }
+
     private String findMonth(){
 
         String monthName = "";
@@ -82,7 +85,7 @@ public final class Generate extends Config {
         return String.format("%s%s%d", findMonth(), SEPARATOR, sc.date);
     }
 
-    public String getDay(){
+    public String getDayName(){
         /*
         get Name of day from device and translate english name to persian name.
         */
@@ -110,15 +113,23 @@ public final class Generate extends Config {
         return dayName;
     }
 
+    public int getDayDigit(){
+
+        return sc.date;
+    }
+
+    public int getYear(){
+        return sc.year;
+    }
+
     public Generate CallBack(CallBack callBack){
         super.callBack = callBack;
         return this;
-
     }
 
     public void generateDay(){
 
-        String date = super.Location(getDay());
+        String date = super.Location(getDayName());
         super.callBack.onReceive(date);
     }
 
@@ -141,7 +152,7 @@ public final class Generate extends Config {
     }
 
 
-    protected class CCalendar {
+    class CCalendar {
 
         int date;
         int month;
