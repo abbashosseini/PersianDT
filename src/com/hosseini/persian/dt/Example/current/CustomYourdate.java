@@ -52,6 +52,19 @@ public class CustomYourdate {
 
                 )
         );
+
+        System.out.println(
+               current.DigitAndLetters()
+        );
+
+        System.out.println(
+                current.fullDigit()
+        );
+
+        System.out.println(
+                current.MonthAndDay()
+        );
+
     }
 
 }
