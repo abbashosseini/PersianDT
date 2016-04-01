@@ -8,12 +8,12 @@ import com.hosseini.persian.dt.PersianDate.Current;
  */
 public class CustomYourdate {
 
-    public static void main(String[] strings){
+    public static void main(String[] strings) {
 
-      new CustomYourdate().date();
+        new CustomYourdate().date();
     }
 
-    public void date(){
+    public void date() {
 
         Current current = PersianDT
                 .Instance()
@@ -54,7 +54,7 @@ public class CustomYourdate {
         );
 
         System.out.println(
-               current.DigitAndLetters()
+                current.DigitAndLetters()
         );
 
         System.out.println(

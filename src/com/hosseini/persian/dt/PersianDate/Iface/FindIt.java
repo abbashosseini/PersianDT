@@ -19,7 +19,7 @@ package com.hosseini.persian.dt.PersianDate.Iface;
 /**
  * @since 3/8/16.
  */
-public interface FindIt{
+public interface FindIt {
 
     String Location(String v);
 }

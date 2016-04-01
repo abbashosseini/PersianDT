@@ -18,6 +18,21 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 
+/**
+ * Henerate Class
+ * <p>
+ * This class provide generate persian date from given date and
+ * you can customize your date any way you like and we make sure this
+ * class threadSafe
+ * <p>
+ *
+ * @author abbashosseini
+ * @version 0.1
+ * @see Config
+ * @since 3/1/2016
+ */
+
+
 import com.hosseini.persian.dt.PersianDate.Collections.Days;
 import com.hosseini.persian.dt.PersianDate.Collections.Months;
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
@@ -25,308 +40,270 @@ import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public final class Generate extends Config {
 
+    private Logger logger = Logger.getLogger(getClass().getSimpleName());
+    /**
+     * mostly we use Timestamp like date format so for easy and re-using
+     * we make it as Default format
+     */
     private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    private final DateFormat dateFormat;
+
+    /**
+     * create persian date and can access it  as follow
+     * {@code sc.year} and {@code sc.month} and {@code sc.date}
+     * and  use it golbaly and ThreadSafe
+     **/
+    private final CCalender sc;
+
+    //maybe  user dont like default SEPARATOR so can change it with Separator(param)    //
     private String SEPARATOR = " ";
-    final DateFormat dateFormat;
-    private final CCalendar sc;
 
     public Generate(String rawDate, String sentence) {
         super(rawDate, sentence);
         dateFormat = new SimpleDateFormat(Format(""), Locale.ENGLISH);
         Date date = null;
-        try {  date = dateFormat.parse(super.getDate());  }
-        catch ( ParseException ignored) {}
-        sc = this.new CCalendar(date);
+        try {
+            date = dateFormat.parse(super.getDateContainStringObject());
+        } catch (ParseException ignored) {
+            logger.warning("check seem you pass date dont match the format, " +
+                    "please check what date and in what foemat you are pass ing to  " +
+                    "getDateContainStringObject() method in superclass (Config) ");
+        }
+        sc = new CCalender(date);
     }
 
-    public String Format(String ft){
+    /*
+    * no need for make it public we use it just
+    * format dates just in this class for now so
+    * we mka eit privaye
+    * */
+    private String Format(String ft) {
 
         return ft.equals("") ? DEFAULT_FORMAT : ft;
     }
 
 
-    public final Generate Separator(String separator){
+    /**
+     * change Separator if you dont like sepace between your date,  example
+     * <pre>
+     *     <code>
+     *          //default date
+     *          //1395 1 1
+     *           PersianDT
+     *                   .Instance()
+     *                   .Current("Today {DATE} in Iran.")
+     *                   .Separator(" / ")
+     *                   .CallBack(new CallBack() {
+     *                            public void onReceive(String date) {
+     *                                               //Another way to use CallBacks
+     *                                               System.out.println(date);
+     *                                                  }
+     *                                               })
+     *                   .WithDigit();
+     *
+     *
+     *  </code>
+     * </pre>
+     *
+     * answer will be {@code //1395 / 1 / 1}
+     * @param separator
+     *          set your seperator you want between your dates
+     *
+     * @return A Generate Class object
+     * */
+    public final Generate Separator(String separator) {
         SEPARATOR = separator;
         return this;
     }
 
-
-    public String getCalendar() {
+    /**
+     * @return a formated String contain just digit
+     */
+    public String getWithFullDateInDigits() {
         return String.format("%d%s%d%s%d", sc.year, SEPARATOR, sc.month, SEPARATOR, sc.date);
     }
 
+    /**
+     * <p>
+     *     this method contain year, month and day and
+     *     formated like 2016 Apr 1
+     * </p>
+     * @return a formated String
+     */
     public String getWithMonthName() {
         return String.format("%d%s%s%s%d", sc.year, SEPARATOR, findMonth(), SEPARATOR, sc.date);
     }
 
+    /**
+     * Getter for monthname for any mehod he need it
+     *
+     * @return a String
+     */
     public int getWithMonthDigit() {
         return sc.month;
     }
 
-    private String findMonth(){
+    private String findMonth() {
 
         String monthName = "";
-        for (Months months: Months.values())
+        for (Months months : Months.values())
             if (Objects.equals(months.getMonthAsInt(), sc.month))
                 monthName = months.getMonthAsString();
 
         return monthName;
     }
 
+    /**
+     * <p>
+     *     this getter have return value like Apr 1
+     * </p>
+     *
+     * @return a String
+     */
     public String getMonthAndDay() {
 
         return String.format("%s%s%d", findMonth(), SEPARATOR, sc.date);
     }
 
-    public String getDayName(){
-        /*
-        get Name of day from device and translate english name to persian name.
-        */
+    /**
+     * <p>
+     *     this getter have return value Contain name of the day of the week
+     * </p>
+     *
+     * @return a String
+     */
+    public String getDayName() {
 
         Date calendar = new Date();
         SimpleDateFormat JustDayofWeek = new SimpleDateFormat(Format("EEE"), Locale.ENGLISH);
 
-        if (!super.getDate().equals("")) {
+        if (!super.getDateContainStringObject().equals("")) {
             DateFormat format = new SimpleDateFormat(Format("yyyy-MM-dd HH:mm:ss"), Locale.ENGLISH);
             try {
-                calendar = format.parse(super.getDate());
+                calendar = format.parse(super.getDateContainStringObject());
             } catch (ParseException ignored) {
                 throw new IllegalAccessError("is Formatted as Date really ? ");
             }
         }
 
-
-        String day =  JustDayofWeek.format(calendar);
+        String day = JustDayofWeek.format(calendar);
         String dayName = "";
 
-        for (Days dayy: Days.values())
+        for (Days dayy : Days.values())
             if (Objects.equals(dayy.name(), day))
                 dayName = dayy.getDay();
 
         return dayName;
     }
 
-    public int getDayDigit(){
+    /**
+     * Getter contain day of the month
+     *
+     * @return a int
+     */
+    public int getDayDigit() {
 
         return sc.date;
     }
 
-    public int getYear(){
+    /**
+     * Getter retuen just year
+     *
+     * @return a int
+     */
+    public int getYear() {
         return sc.year;
     }
 
-    public Generate CallBack(CallBack callBack){
+
+    /**
+     * CallBack Pattern
+     * <p>
+     *      we use callback to get value from any where possible in PersianDT
+     *      and this is Asynchronous way to get date and pass it to dev/user
+     *      can get response and deal with it
+     *      and of course we add Builder Pattern how ? easy we return current
+     *      object so we can access it after we implement or what ever correct
+     *      way you are gonna use.
+     * <p>
+     *
+     * @param callBack
+     *              we have too declare callback it
+     *              how ? you can implement the
+     *              class or use lambda or method refrence
+     *              of course in java 8 or use Anonymous implement
+     *              for more you can see examples in Example folder
+     *
+     * @return a Current object
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java">AgoTime Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java">Current date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/useItEasyWayLikeBuilderpattern.java">Current date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java">generate date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java">Genrate Date Example</a>
+     */
+
+    public Generate CallBack(CallBack callBack) {
         super.callBack = callBack;
         return this;
     }
 
-    public void generateDay(){
 
-        String date = super.Location(getDayName());
+    /**
+     * <p>
+     * get date complete in Numerical
+     * fill Callback with date and return reponse Asynchronously
+     * </p>
+     *
+     * @see CallBack
+     * @see CCalender
+     */
+
+    public void generateFullDate() {
+
+        String date = super.Location(getWithFullDateInDigits());
         super.callBack.onReceive(date);
     }
 
-    public void generateFullDate(){
 
-        String date = super.Location(getCalendar());
-        super.callBack.onReceive(date);
-    }
-
-    public void generateWithMonthName(){
+    /**
+     * <p>
+     *      get date like 2016 Apr 1 so you can see in here we retuen
+     *      month name instead month number fill Callback with date and
+     *      return reponse Asynchronously
+     * </p>
+     *
+     * @see CallBack
+     * @see CCalender
+     */
+    public void generateWithMonthName() {
 
         String date = super.Location(getWithMonthName());
         super.callBack.onReceive(date);
     }
 
-    public void generateWithoutYear(){
+
+    /**
+     * <p>
+     *      get date complete in Numerical without year
+     *      fill Callback with date and return reponse
+     *      Asynchronously
+     * </p>
+     *
+     * @see CallBack
+     * @see CCalender
+     */
+    public void generateWithoutYear() {
 
         String date = super.Location(getMonthAndDay());
         super.callBack.onReceive(date);
-    }
-
-
-    class CCalendar {
-
-        int date;
-        int month;
-        int year;
-
-        protected int getDate() {
-            return date;
-        }
-
-
-        protected void setDate(int date) {
-            this.date = date;
-        }
-
-        public CCalendar()
-        {
-            Date MiladiDate = new Date();
-            calcSolarCalendar(MiladiDate);
-        }
-
-        protected CCalendar(Date date)
-        {
-            calcSolarCalendar(date);
-        }
-
-        private void calcSolarCalendar(Date MiladiDate) {
-
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(MiladiDate);
-            int ld;
-            int miladiYear = calendar.get(Calendar.YEAR);
-            int miladiMonth = calendar.get(Calendar.MONTH) + 1;
-            int miladiDate = calendar.get(Calendar.DAY_OF_MONTH);
-
-            int[] buf1 = new int[12];
-            int[] buf2 = new int[12];
-
-            buf1[0] = 0;
-            buf1[1] = 31;
-            buf1[2] = 59;
-            buf1[3] = 90;
-            buf1[4] = 120;
-            buf1[5] = 151;
-            buf1[6] = 181;
-            buf1[7] = 212;
-            buf1[8] = 243;
-            buf1[9] = 273;
-            buf1[10] = 304;
-            buf1[11] = 334;
-
-            buf2[0] = 0;
-            buf2[1] = 31;
-            buf2[2] = 60;
-            buf2[3] = 91;
-            buf2[4] = 121;
-            buf2[5] = 152;
-            buf2[6] = 182;
-            buf2[7] = 213;
-            buf2[8] = 244;
-            buf2[9] = 274;
-            buf2[10] = 305;
-            buf2[11] = 335;
-
-            if ((miladiYear % 4) != 0) {
-                date = buf1[miladiMonth - 1] + miladiDate;
-
-                if (date > 79) {
-                    date = date - 79;
-                    if (date <= 186) {
-                        switch (date % 31) {
-                            case 0:
-                                month = date / 31;
-                                date = 31;
-                                break;
-                            default:
-                                month = (date / 31) + 1;
-                                date = (date % 31);
-                                break;
-                        }
-                        year = miladiYear - 621;
-                    } else {
-                        date = date - 186;
-
-                        switch (date % 30) {
-                            case 0:
-                                month = (date / 30) + 6;
-                                date = 30;
-                                break;
-                            default:
-                                month = (date / 30) + 7;
-                                date = (date % 30);
-                                break;
-                        }
-                        year = miladiYear - 621;
-                    }
-                } else {
-                    if ((miladiYear > 1996) && (miladiYear % 4) == 1) {
-                        ld = 11;
-                    } else {
-                        ld = 10;
-                    }
-                    date = date + ld;
-
-                    switch (date % 30) {
-                        case 0:
-                            month = (date / 30) + 9;
-                            date = 30;
-                            break;
-                        default:
-                            month = (date / 30) + 10;
-                            date = (date % 30);
-                            break;
-                    }
-                    year = miladiYear - 622;
-                }
-            } else {
-                date = buf2[miladiMonth - 1] + miladiDate;
-
-                if (miladiYear >= 1996) {
-                    ld = 79;
-                } else {
-                    ld = 80;
-                }
-                if (date > ld) {
-                    date = date - ld;
-
-                    if (date <= 186) {
-                        switch (date % 31) {
-                            case 0:
-                                month = (date / 31);
-                                date = 31;
-                                break;
-                            default:
-                                month = (date / 31) + 1;
-                                date = (date % 31);
-                                break;
-                        }
-                        year = miladiYear - 621;
-                    } else {
-                        date = date - 186;
-
-                        switch (date % 30) {
-                            case 0:
-                                month = (date / 30) + 6;
-                                date = 30;
-                                break;
-                            default:
-                                month = (date / 30) + 7;
-                                date = (date % 30);
-                                break;
-                        }
-                        year = miladiYear - 621;
-                    }
-                }
-
-                else {
-                    date = date + 10;
-
-                    switch (date % 30) {
-                        case 0:
-                            month = (date / 30) + 9;
-                            date = 30;
-                            break;
-                        default:
-                            month = (date / 30) + 10;
-                            date = (date % 30);
-                            break;
-                    }
-                    year = miladiYear - 622;
-                }
-
-            }
-        }
-
     }
 
 }

@@ -11,7 +11,7 @@ public enum Months {
     Feb("ارديبهشت", 2),
     Mar("خرداد", 3),
     Apr("تير", 4),
-    May( "مرداد", 5),
+    May("مرداد", 5),
     Jun("شهريور", 6),
     Jul("مهر", 7),
     Aug("آبان", 8),
@@ -23,16 +23,26 @@ public enum Months {
     private String monthS;
     private int monthI;
 
-    Months(String name, int index){
+    Months(String name, int index) {
         this.monthS = name;
         this.monthI = index;
     }
 
-    public String getMonthAsString(){
+    /**
+     * Getter for property 'monthAsString'.
+     *
+     * @return Value for property 'monthAsString'.
+     */
+    public String getMonthAsString() {
         return monthS;
     }
 
 
+    /**
+     * Getter for property 'monthAsInt'.
+     *
+     * @return Value for property 'monthAsInt'.
+     */
     public int getMonthAsInt() {
         return monthI;
     }

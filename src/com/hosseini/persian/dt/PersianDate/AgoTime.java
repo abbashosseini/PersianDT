@@ -16,6 +16,19 @@ package com.hosseini.persian.dt.PersianDate;
  * limitations under the License.
  */
 
+/**
+ * AgoTime Class
+ * <p>
+ * This class provide and generate persian date in Ago format
+ * like {@code //1 year ago}
+ * <p>
+ *
+ * @author abbashosseini <mrabbashosseini@gmail.com>
+ * @version 0.1
+ * @see Config
+ * @since 3/1/2016
+ */
+
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
 public final class AgoTime extends Config {
@@ -24,68 +37,94 @@ public final class AgoTime extends Config {
         super(date, sentence);
     }
 
-    public String tostring() {
+
+    /*
+     *  its pass date in Ago Format and String, its more readable and userfrndly
+     *  and  Does not support the century's
+     */
+    public String dateTime() {
 
 
-        final long	current = System.currentTimeMillis(),
-                timestamp = getDateAsdate().getTime(),
-                diff = (current - timestamp)/1000;
+        final long current = System.currentTimeMillis(),
+                timestamp = getDateContaindateObject().getTime(),
+                diff = (current - timestamp) / 1000;
+
+        int amount;
+        String what;
 
 
-        int	amount;
-        String	what;
-
-
-        if(diff > 31536000) {
-            amount = (int)(diff/31536000);
+        if (diff > 31536000) {
+            amount = (int) (diff / 31536000);
             what = "سال";
-        }
-        else if(diff > 2592000) {
-            amount = (int)(diff/2592000);
+        } else if (diff > 2592000) {
+            amount = (int) (diff / 2592000);
             what = "ماه";
 
-        }
-        else if(diff > 604800) {
-            amount = (int)(diff/604800);
+        } else if (diff > 604800) {
+            amount = (int) (diff / 604800);
             what = "هفته";
 
-        }
-        else if(diff > 86400) {
-            amount = (int)(diff/86400);
+        } else if (diff > 86400) {
+            amount = (int) (diff / 86400);
             what = "روز";
-        }
-        else if(diff > 3600) {
-            amount = (int)(diff/3600);
+        } else if (diff > 3600) {
+            amount = (int) (diff / 3600);
             what = "ساعت";
-        }
-        else if(diff > 60) {
-            amount = (int)(diff/60);
+        } else if (diff > 60) {
+            amount = (int) (diff / 60);
             what = "دقیقه";
-        }
-        else {
-            amount = (int)(diff);
+        } else {
+            amount = (int) (diff);
             return amount + " ثانیه پیش";
         }
 
-        if(amount == 1) {
-            if(what.equals("روز")) {
+        if (amount == 1) {
+            if (what.equals("روز")) {
                 return "دیروز";
-            }
-            else if(what.equals("هفته") || what.equals("ماه") || what.equals("سال")) {
-                return what+ " پیش " ;
+            } else if (what.equals("هفته") || what.equals("ماه") || what.equals("سال")) {
+                return what + " پیش ";
             }
         }
 
         return String.format("%s %s %s ", amount, what, "پیش ");
     }
 
-    public AgoTime CallBack(CallBack callBack){
+
+    /**
+     * CallBack Pattern
+     * <p>
+     *      we use callback to get value from any where possible in PersianDT
+     *      and this is Asynchronous way to get date and pass it to dev/user
+     *      can get resonse and deal with it
+     *      and of course we add Builder Pattern how ? easy we return  current
+     *      object so we can access it after we implement or what ever correct
+     *      way you are gonna use.
+     * <p>
+     *
+     * @param callBack
+     *              we have too declare callback it
+     *              how ? easy you can implement the
+     *              class or use lambda or method refrence
+     *              of course in java 8 or use Anonymous implement
+     *              for more you can see examples in Example folder
+     *
+     * @return a Current object
+     *
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java">AgoTime Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java">Current date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/useItEasyWayLikeBuilderpattern.java">Current date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java">generate date Example</a>
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java">Genrate Date Example</a>     */
+
+    public AgoTime CallBack(CallBack callBack) {
         super.callBack = callBack;
         return this;
     }
 
-    public void parse(){
-        String date = super.Location(tostring());
+    /*
+    * get date in Ago format*/
+    public void parse() {
+        String date = super.Location(dateTime());
         super.callBack.onReceive(date);
     }
 

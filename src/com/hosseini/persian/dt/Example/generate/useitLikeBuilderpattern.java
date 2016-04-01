@@ -5,7 +5,6 @@ import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Random;
  */
 public class useitLikeBuilderpattern {
 
-    public static void main(String[] s){
+    public static void main(String[] s) {
 
         // in java 8
         /*
@@ -21,10 +20,10 @@ public class useitLikeBuilderpattern {
         * no need implment callback or create anonymous Callbacks Objects
         * */
         int random = new Random().nextInt(12);
-        Calendar cal= Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, random);
 
-        String format  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
 
         //Lambda
         PersianDT

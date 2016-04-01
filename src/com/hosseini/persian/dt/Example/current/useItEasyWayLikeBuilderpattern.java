@@ -8,13 +8,13 @@ import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
  */
 public class useItEasyWayLikeBuilderpattern implements CallBack {
 
-    public static  void main(String[] strings){
+    public static void main(String[] strings) {
 
 
         new useItEasyWayLikeBuilderpattern().date();
     }
 
-    public void date(){
+    public void date() {
 
         PersianDT
                 .Instance()
@@ -46,17 +46,16 @@ public class useItEasyWayLikeBuilderpattern implements CallBack {
                 .Instance()
                 .Current("Wendsday equle to {DATE} in Persian.")
                 .Separator("/")
-                 //use methiod reference
-                 //for example System.out::println
+                        //use methiod reference
+                        //for example System.out::println
                 .CallBack(System.out::println)
-                .WithDayName();
+                .WithMonthName();
 
         System.out.println();
 
         PersianDT
                 .Instance()
                 .Current("Current persian date in your device is {DATE} witout year.")
-                .Separator("`")
                 .CallBack(this)
                 .WithoutYear();
 

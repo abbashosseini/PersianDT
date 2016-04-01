@@ -24,6 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,56 +34,84 @@ import java.util.regex.Pattern;
 
 public class Config implements FindIt {
 
+
+    private Logger log = Logger.getLogger(getClass().getSimpleName());
+
+    /**
+     * assign constructor paratamter with this variable
+     **/
+    private final String dateContainStringObject, sentence;
+
     /**
      * CallBack Pattern
      * <p>
      * this CallBack Here can you access it from subClasses
      * no need to create one any more nedd it use it
-     * <p>
+     * </p>
      */
     CallBack callBack;
 
-
-    /**
-     *
-     **/
-    private final String dateAsString, sentence;
-    private Date dateAsdate;
+    private Date dateContainDateObject;
 
 
     Config(String date, String sentence) {
-        this.dateAsString = date;
+        this.dateContainStringObject = date;
         this.sentence = sentence;
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        SimpleDateFormat format
+                = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         try {
-            dateAsdate = format.parse(this.dateAsString);
+            dateContainDateObject = format.parse(this.dateContainStringObject);
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.warning("Check out maybe your date is not match the format, please check line 64 for that ");
         }
     }
 
-    public Date getDateAsdate() {
-        return dateAsdate;
+    /**
+     * Getter for grap date from constructor
+     *
+     * @return A Date
+     */
+    public Date getDateContaindateObject() {
+        return dateContainDateObject;
     }
 
-    public String getDate() {
-        return dateAsString;
+    /**
+     * Getter for grap date from Constructor
+     *
+     * @return A String
+     */
+    public String getDateContainStringObject() {
+        return dateContainStringObject;
     }
 
+    /**
+     * @return A String
+     */
     public String getSentence() {
         return sentence;
     }
 
+
+    /** {@inheritDoc} */
+
+    /**
+     * this method will find place for your date in paragraph or sentence
+     *
+     * @param date will we have to pass the date from subclass
+     *             and find place and put it there
+     * @return a String
+     */
+
     @Override
-    public String Location(String word) {
+    public String Location(String date) {
 
         Pattern pattern = Pattern.compile("\\{DATE\\}");
         Matcher matcher = pattern.matcher(getSentence());
 
         if (matcher.find())
-            return matcher.replaceAll(word);
+            return matcher.replaceAll(date);
         else
-            return word;
+            return date;
     }
 }
