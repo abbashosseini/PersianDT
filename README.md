@@ -27,6 +27,7 @@ you can use use it any where JDK Rnning **Android** or **JAVAEE** or **JAVASE** 
   * WhatEver
 * Can Custom your date if you want
 * Can you use MarkDown `{DATE}`to Specified where you want date to be displayed - Text/String
+* can you create date in Ago Format like `2016 Apr 1` become `1 day ago`
 
 ....
 
@@ -35,21 +36,102 @@ you can use use it any where JDK Rnning **Android** or **JAVAEE** or **JAVASE** 
 so if you wanna get reponse Asynchronous You have to use `CallBack Interface` and for using it you have to know how 
 in PersianDt you can fill and get response in couple of ways like :
 
+ 1. implement CallBack
+ 2. Lambda/Method Refernce (JAVA8)
+ 3. Anonymous implement
+ 
 
+```java
+
+//implement CallBack
+ public class useItEasyWayLikeBuilderpattern implements CallBack {
+        public static void main(String[] strings) {
+              new useItEasyWayLikeBuilderpattern().date();
+        }
+        
+         public void date() {
+             PersianDT
+                .Instance()
+                .Current("Current date is {DATE} .")
+                .Separator("|")
+                .CallBack(this)
+                .WithMonthName();
+         }
+
+       @Override
+       public void onReceive(String date) {
+             System.out.println(date);
+       }
+
+```
+
+
+```java
+
+//Lambda/Method Refernce (JAVA8)
+
+   String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+   //Lambda
+   PersianDT
+     .Instance()
+     .generate(format, "{DATE}")
+     .CallBack(date -> System.out.println(date))
+     .Separator("_")
+     .generateFullDate();
+
+
+
+    //method refr3nce
+    PersianDT
+      .Instance()
+      .generate(format, "{DATE}")
+      .CallBack(System.out::println)
+      .Separator("--")
+      .generateWithMonthName();
+
+```
+
+```java
+
+//Anonymous implement
+
+    PersianDT
+    .Instance()
+    .generate(format, "{DATE}")
+    .CallBack(new CallBack() {
+           @Override
+           public void onReceive(String date) {
+           System.out.println(date);
+           }
+    })
+    .Separator(" | ")
+    .generateWithMonthName();
+
+```
 
 #### Initializing :
 
 #####you can use Builder Pattern Style :
 
 ```Java
- PersianDT
-    .Instance()
-    .Current("Current persian date in your device is {DATE} witout year.")
-    .CallBack(this)
-    .WithoutYear();
+PersianDT
+   .Instance()
+   .generate(format, "{DATE}")
+   .CallBack(System.out::println)
+   .Separator("--")
+   .generateWithMonthName();
 
 ```
 
-you can see full Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/useItEasyWayLikeBuilderpattern.java#L56-L60) 
+you can see full Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java#L37-L43) 
   
+#####you can use it to create appropriate instance :  
+
+   [Example 1](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java)
+   
+   [Example 2](https://github.com/abbashosseinai/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
+   
+#####Create date in Ago Format :
+
+[Example 1](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
 
