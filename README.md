@@ -127,11 +127,11 @@ you can see full Example in [here](https://github.com/abbashosseini/PersianDT/bl
   
 #####you can use it to create appropriate instance :  
 
-   [Example 1](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java)
+   [Example 1- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java)
    
-   [Example 2](https://github.com/abbashosseinai/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
+   [Example 2- Customize your date](https://github.com/abbashosseinai/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
    
 #####Create date in Ago Format :
 
-[Example 1](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
+[Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
 
