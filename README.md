@@ -29,7 +29,6 @@ you can use use it any where JDK Rnning **Android** or **JAVAEE** or **JAVASE** 
 * Can you use MarkDown `{DATE}`to Specified where you want date to be displayed - Text/String
 * can you create date in Ago Format like `2016 Apr 1` become `1 day ago`
 
-....
 
 ##Asynchronous Response :
 
@@ -40,6 +39,8 @@ in PersianDt you can fill and get response in couple of ways like :
  2. Lambda/Method Refernce (JAVA8)
  3. Anonymous implement
  
+
+###if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/)
 
 ```java
 
@@ -134,8 +135,6 @@ you can see full Example in [here](https://github.com/abbashosseini/PersianDT/bl
 #####Create date in Ago Format :
 
 [Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
-
-if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/).
 
 ###License
        Copyright (C) 2016 AbbasHosseini
