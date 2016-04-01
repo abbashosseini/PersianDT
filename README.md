@@ -135,6 +135,8 @@ you can see full Example in [here](https://github.com/abbashosseini/PersianDT/bl
 
 [Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
 
+if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/).
+
 ###License
        Copyright (C) 2016 AbbasHosseini
 
