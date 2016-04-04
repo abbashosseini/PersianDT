@@ -71,12 +71,21 @@ public class GenerateTest {
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthDigit(), 1);
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1394);
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthName(), Months.Jan.getMonthAsString());
-        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayName(), Days.Thu.getDay());
+
+
+        DATE = "2010-08-01 00:00:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getWithMonthName(), "1389 مرداد 10");
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayDigit(), 10);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthDigit(), 5);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1389);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthName(), Months.May.getMonthAsString());
+
 
     }
 
     @Test
     public void testGetWithMonthDigit() throws Exception {
+
 
     }
 
