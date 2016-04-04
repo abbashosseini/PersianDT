@@ -1,4 +1,4 @@
-package com.hosseini.persian.dt.PersianDate.Collections;
+package com.hosseini.persian.dt.PersianDate.enumCollections;
 
 /**
  * Created by abbas on 3/29/16.

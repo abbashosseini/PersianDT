@@ -30,47 +30,97 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
+import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
 
 public final class AgoTime extends Config {
 
+    //StateLess
     public AgoTime(String date, String sentence) {
         super(date, sentence);
     }
 
-
-    /*
+    /**
      *  its pass date in Ago Format and String, its more readable and userfrndly
      *  and  Does not support the century's
+     *
+     * @return A Formated date in Ago Format
+     *
+     **/
+    public String format() {
+
+        long current = System.currentTimeMillis(), timestamp = getDateContaindateObject().getTime(), diff = (current - timestamp) / 1000;
+        int amount; String what; String Extenion = "پیش";
+
+        for (AgoFomat format: AgoFomat.values())
+            /** check and make sure divide (/) don't be zero and don't allow
+             * java.lang.ArithmeticException execption going to happen*/
+            if (diff > AgoFomat.minute.getFormatNumber())
+            // Check and know how to format thw date in ago
+                if (diff > format.getFormatNumber()) {
+                    // get digit for Ago format
+                    amount = (int) (diff / format.getFormatNumber());
+                    //get name (year/month/day) for Ago format
+                    what   =  format.getFormatname();
+
+                    if (amount == 1) {
+
+                        if (what.equals(AgoFomat.day.getFormatname())) {
+                            return "دیروز";
+                        }
+
+                    }
+
+                    return String.format("%s %s %s", amount, what, Extenion);
+                }
+
+        amount = (int) (diff);
+        return String.format("%d %s", amount, AgoFomat.Know.getFormatname());
+    }
+
+
+    /**
+     *  its pass date in Ago Format and String, its more readable and userfrndly
+     *  and  Does not support the century's
+     *
+     * @deprecated this method has awful design .
+     * @see AgoTime#format()
+     *
      */
+    @Deprecated
     public String dateTime() {
 
 
-        final long current = System.currentTimeMillis(),
+        long current = System.currentTimeMillis(),
                 timestamp = getDateContaindateObject().getTime(),
                 diff = (current - timestamp) / 1000;
 
-        int amount;
-        String what;
+        int amount = 0;
+        String what = null;
 
 
         if (diff > 31536000) {
             amount = (int) (diff / 31536000);
             what = "سال";
-        } else if (diff > 2592000) {
+        }
+        else if (diff > 2592000) {
             amount = (int) (diff / 2592000);
             what = "ماه";
 
-        } else if (diff > 604800) {
+        }
+        else if (diff > 604800) {
             amount = (int) (diff / 604800);
             what = "هفته";
 
-        } else if (diff > 86400) {
+        }
+        else if (diff > 86400) {
             amount = (int) (diff / 86400);
             what = "روز";
-        } else if (diff > 3600) {
+        }
+        else if (diff > 3600) {
             amount = (int) (diff / 3600);
             what = "ساعت";
-        } else if (diff > 60) {
+        }
+        else if (diff > 60) {
             amount = (int) (diff / 60);
             what = "دقیقه";
         } else {
@@ -88,6 +138,7 @@ public final class AgoTime extends Config {
 
         return String.format("%s %s %s ", amount, what, "پیش ");
     }
+
 
 
     /**
@@ -108,7 +159,7 @@ public final class AgoTime extends Config {
      *              of course in java 8 or use Anonymous implement
      *              for more you can see examples in Example folder
      *
-     * @return a Current object
+     * @return a AgoTime object
      *
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java">AgoTime Example</a>
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java">Current date Example</a>
@@ -121,10 +172,9 @@ public final class AgoTime extends Config {
         return this;
     }
 
-    /*
-    * get date in Ago format*/
+    /** get date in Ago format **/
     public void parse() {
-        String date = super.Location(dateTime());
+        String date = super.Location(format());
         super.callBack.onReceive(date);
     }
 

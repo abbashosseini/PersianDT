@@ -1,7 +1,7 @@
 package com.hosseini.persian.dt.PersianDate;
 
-import com.hosseini.persian.dt.PersianDate.Collections.Days;
-import com.hosseini.persian.dt.PersianDate.Collections.Months;
+import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
+import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
 import java.text.ParseException;

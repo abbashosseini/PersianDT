@@ -1,18 +1,15 @@
 package com.hosseini.persian.dt.PersianDate;
 
 import com.hosseini.persian.dt.PersianDT;
-import com.hosseini.persian.dt.PersianDate.Collections.Days;
-import com.hosseini.persian.dt.PersianDate.Collections.Months;
-import junit.framework.Assert;
-import org.junit.Test;
-
+import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
+import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
+import org.junit.*;
 /**
  * Created by abbas on 4/3/16.
  */
 public class GenerateTest {
 
     private final static String MARKDOWN = "{DATE}";
-
 
     @Test
     public void testGetFulldateinDigits() throws Exception {
@@ -61,7 +58,20 @@ public class GenerateTest {
     @Test
     public void testGetWithMonthName() throws Exception {
 
+        String DATE = "2016-04-04 10:31:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getWithMonthName(), "1395 فروردین 16");
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayDigit(), 16);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1395);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthName(), Months.Jan.getMonthAsString());
 
+
+        DATE = "2015-04-02 10:31:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getWithMonthName(), "1394 فروردین 13");
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayDigit(), 13);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthDigit(), 1);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1394);
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getJustMonthName(), Months.Jan.getMonthAsString());
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayName(), Days.Thu.getDay());
 
     }
 

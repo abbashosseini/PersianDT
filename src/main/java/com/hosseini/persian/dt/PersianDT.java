@@ -25,7 +25,14 @@ import java.util.Locale;
  */
 
 /**
- * @author      AbbaS Hosseini  <mrabbashosseini@gmail.com>
+ * PersianDT class
+ * <p>
+ *     basically is Main Class in PersianDT its job make sure  just
+ *     one instance or make sure all tasks using with same instance
+ *     its good for don't allow leaking memory happen and make easy
+ *     to control your instances
+ * </p>
+ * @author      Abbas Hosseini  <mrabbashosseini@gmail.com>
  * @version     0.1
  * @since       3/8/16
  */
@@ -35,12 +42,12 @@ public class PersianDT {
     private static PersianDT singleton;
 
     /**
-     *  Do not instantiate PersianDT
+     * you can't instantiate PersianDT directly
      * <p>
-     * we use Singleton Pattern to don't allow leak memory
-     * and make sure we have ust one instance out there
+     *      we use Singleton Pattern to don't allow leak memory
+     *      and make sure we have ust one instance out there
      * <p>
-     */
+     **/
     private PersianDT() {}
 
     public static PersianDT Instance() {
@@ -78,11 +85,11 @@ public class PersianDT {
      */
     public Current Current(Object sentence) {
 
-        final String formatDate =
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date());
+        final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date());
 
         if (sentence instanceof String)
             return new Current(formatDate, (String) sentence);
+
         else
             return new Current(formatDate, "");
 
@@ -117,6 +124,7 @@ public class PersianDT {
 
         if (sentence instanceof String)
             return new Generate(date, (String) sentence);
+
         else
             return new Generate(date, "");
     }
@@ -148,6 +156,7 @@ public class PersianDT {
 
         if (sentence instanceof String)
             return new AgoTime(date, (String) sentence);
+
         else
             return new AgoTime(date, "");
     }

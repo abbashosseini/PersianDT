@@ -13,7 +13,7 @@ public class useitLLikeBuilderPattern {
 
     public static void main(String[] strings) {
 
-        String format = "2016-01-11 00:00:00";
+        String format = "2016-04-04 14:15:00";
 
         //Lambda
         PersianDT
@@ -21,6 +21,8 @@ public class useitLLikeBuilderPattern {
                 .Ago(format, "{DATE}")
                 .CallBack(date -> System.out.println(date))
                 .parse();
+
+        format = "2015-01-11 00:00:00";
 
 
         //method refr3nce
@@ -30,5 +32,8 @@ public class useitLLikeBuilderPattern {
                 .CallBack(System.out::println)
                 .parse();
 
+        format = "2015-11-11 04:00:00";
+        String Custom = PersianDT.Instance().Ago(format,"{DATE}").format();
+        System.out.println(Custom);
     }
 }
