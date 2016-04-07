@@ -85,6 +85,7 @@ public final class AgoTime extends Config {
      *
      * @see AgoTime#format()
      * @deprecated this method has awful design .
+     * @return String in Ago format
      */
     @Deprecated
     public String dateTime() {
