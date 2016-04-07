@@ -5,49 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751bff61-73f9-41bc-897f-beb2e4fcdf7f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/allclasses-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/allclasses-noframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/AgoTime.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Collections/Days.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Collections/Months.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Collections/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Collections/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Collections/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Config.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Current.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Generate.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Iface/CallBack.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Iface/FindIt.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Iface/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Iface/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/Iface/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/com/hosseini/persian/dt/PersianDate/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/constant-values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/help-doc.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-1.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-10.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-11.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-12.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-13.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-3.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-4.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-5.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-6.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-7.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-8.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index-files/index-9.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/overview-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/overview-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/overview-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/package-list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Doc/stylesheet.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hosseini/persian/dt/PersianDate/AgoTime.java" afterPath="$PROJECT_DIR$/src/main/java/com/hosseini/persian/dt/PersianDate/AgoTime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PersianDT.iws" />
@@ -69,24 +26,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GenerateTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GenerateTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/hosseini/persian/dt/PersianDate/GenerateTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="1.3119048">
               <caret line="148" column="1" selection-start-line="148" selection-start-column="1" selection-end-line="148" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgoTime.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hosseini/persian/dt/PersianDate/AgoTime.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6261905">
-              <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -453,7 +400,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="959" height="772" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -462,8 +409,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32935917" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935917" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935917" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2565172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="114" y="98" width="246" height="671" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935917" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -613,21 +560,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/hosseini/persian/dt/PersianDate/GenerateTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="1" selection-start-line="148" selection-start-column="1" selection-end-line="148" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hosseini/persian/dt/PersianDate/AgoTime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6261905">
           <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hosseini/persian/dt/PersianDate/GenerateTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3119048">
+          <caret line="148" column="1" selection-start-line="148" selection-start-column="1" selection-end-line="148" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
