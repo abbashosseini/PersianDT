@@ -20,11 +20,11 @@ public enum AgoFomat {
         this.format = format;
     }
 
-    public String getFormatname(){
+    public String getFormatname() {
         return name;
     }
 
-    public int getFormatNumber(){
+    public int getFormatNumber() {
         return format;
     }
 }

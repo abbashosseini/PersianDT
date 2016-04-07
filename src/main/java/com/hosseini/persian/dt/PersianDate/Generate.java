@@ -33,9 +33,9 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 
+import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -47,13 +47,12 @@ import java.util.logging.Logger;
 
 public final class Generate extends Config {
 
-    private final Logger logger = Logger.getLogger(Generate.class.getSimpleName());
     /**
      * mostly we use Timestamp like date format so for easy and re-using
      * we make it as Default format
      */
     private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
+    private final Logger logger = Logger.getLogger(Generate.class.getSimpleName());
     private final DateFormat dateFormat;
 
     /**
@@ -112,13 +111,12 @@ public final class Generate extends Config {
      *
      *  </code>
      * </pre>
-     *
+     * <p>
      * answer will be {@code //1395 / 1 / 1}
-     * @param separator
-     *          set your seperator you want between your dates
      *
+     * @param separator set your seperator you want between your dates
      * @return A Generate Class object
-     * */
+     */
     public final Generate Separator(String separator) {
         SEPARATOR = separator;
         return this;
@@ -133,9 +131,10 @@ public final class Generate extends Config {
 
     /**
      * <p>
-     *     this method contain year, month and day and
-     *     formated like 2016 Apr 1
+     * this method contain year, month and day and
+     * formated like 2016 tir 1
      * </p>
+     *
      * @return a formated String
      */
     public String getWithMonthName() {
@@ -167,7 +166,7 @@ public final class Generate extends Config {
 
     /**
      * <p>
-     *     this getter have return value like Apr 1
+     * this getter have return value like tir 1
      * </p>
      *
      * @return a String
@@ -179,7 +178,7 @@ public final class Generate extends Config {
 
     /**
      * <p>
-     *     this getter have return value Contain name of the day of the week
+     * this getter have return value Contain name of the day of the week
      * </p>
      *
      * @return a String
@@ -231,21 +230,19 @@ public final class Generate extends Config {
     /**
      * CallBack Pattern
      * <p>
-     *      we use callback to get value from any where possible in PersianDT
-     *      and this is Asynchronous way to get date and pass it to dev/user
-     *      can get response and deal with it
-     *      and of course we add Builder Pattern how ? easy we return current
-     *      object so we can access it after we implement or what ever correct
-     *      way you are gonna use.
+     * we use callback to get value from any where possible in PersianDT
+     * and this is Asynchronous way to get date and pass it to dev/user
+     * can get response and deal with it
+     * and of course we add Builder Pattern how ? easy we return current
+     * object so we can access it after we implement or what ever correct
+     * way you are gonna use.
      * <p>
      *
-     * @param callBack
-     *              we have too declare callback it
-     *              how ? you can implement the
-     *              class or use lambda or method refrence
-     *              of course in java 8 or use Anonymous implement
-     *              for more you can see examples in Example folder
-     *
+     * @param callBack we have too declare callback it
+     *                 how ? you can implement the
+     *                 class or use lambda or method refrence
+     *                 of course in java 8 or use Anonymous implement
+     *                 for more you can see examples in Example folder
      * @return a Current object
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java">AgoTime Example</a>
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java">Current date Example</a>
@@ -279,9 +276,9 @@ public final class Generate extends Config {
 
     /**
      * <p>
-     *      get date like 2016 Apr 1 so you can see in here we retuen
-     *      month name instead month number fill Callback with date and
-     *      return reponse Asynchronously
+     * get date like 2016 April 1 so you can see in here we retuen
+     * month name instead month number fill Callback with date and
+     * return reponse Asynchronously
      * </p>
      *
      * @see CallBack
@@ -296,9 +293,9 @@ public final class Generate extends Config {
 
     /**
      * <p>
-     *      get date complete in Numerical without year
-     *      fill Callback with date and return reponse
-     *      Asynchronously
+     * get date complete in Numerical without year
+     * fill Callback with date and return reponse
+     * Asynchronously
      * </p>
      *
      * @see CallBack

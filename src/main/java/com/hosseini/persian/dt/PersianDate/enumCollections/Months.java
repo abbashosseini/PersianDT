@@ -7,18 +7,18 @@ public enum Months {
 
     /*
     * dont worry we just use values */
-    Jan("فروردین", 1),
-    Feb("ارديبهشت", 2),
-    Mar("خرداد", 3),
-    Apr("تير", 4),
-    May("مرداد", 5),
-    Jun("شهريور", 6),
-    Jul("مهر", 7),
-    Aug("آبان", 8),
-    Sep("آذر", 9),
-    Oct("دي", 10),
-    Nov("بهمن", 11),
-    Dec("اسفند", 12);
+    Farvardin("فروردین", 1),
+    Ordibehesht("ارديبهشت", 2),
+    Khordad("خرداد", 3),
+    tir("تير", 4),
+    Mordad("مرداد", 5),
+    shahrivar("شهريور", 6),
+    Mehr("مهر", 7),
+    Aban("آبان", 8),
+    Azar("آذر", 9),
+    Dy("دي", 10),
+    Bahman("بهمن", 11),
+    Esfand("اسفند", 12);
 
     private String monthS;
     private int monthI;

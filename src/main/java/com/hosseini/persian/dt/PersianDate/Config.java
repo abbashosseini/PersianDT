@@ -35,13 +35,10 @@ import java.util.regex.Pattern;
 public class Config implements FindIt {
 
 
-    private Logger log = Logger.getLogger(getClass().getSimpleName());
-
     /**
      * assign constructor paratamter with this variable
      **/
     private final String dateContainStringObject, sentence;
-
     /**
      * CallBack Pattern
      * <p>
@@ -50,7 +47,7 @@ public class Config implements FindIt {
      * </p>
      */
     CallBack callBack;
-
+    private Logger log = Logger.getLogger(getClass().getSimpleName());
     private Date dateContainDateObject;
 
 

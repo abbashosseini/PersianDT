@@ -27,14 +27,15 @@ import java.util.Locale;
 /**
  * PersianDT class
  * <p>
- *     basically is Main Class in PersianDT its job make sure  just
- *     one instance or make sure all tasks using with same instance
- *     its good for don't allow leaking memory happen and make easy
- *     to control your instances
+ * basically is Main Class in PersianDT its job make sure  just
+ * one instance or make sure all tasks using with same instance
+ * its good for don't allow leaking memory happen and make easy
+ * to control your instances
  * </p>
- * @author      Abbas Hosseini  <mrabbashosseini@gmail.com>
- * @version     0.1
- * @since       3/8/16
+ *
+ * @author Abbas Hosseini  <mrabbashosseini@gmail.com>
+ * @version 0.1
+ * @since 3/8/16
  */
 
 public class PersianDT {
@@ -44,11 +45,12 @@ public class PersianDT {
     /**
      * you can't instantiate PersianDT directly
      * <p>
-     *      we use Singleton Pattern to don't allow leak memory
-     *      and make sure we have ust one instance out there
+     * we use Singleton Pattern to don't allow leak memory
+     * and make sure we have ust one instance out there
      * <p>
      **/
-    private PersianDT() {}
+    private PersianDT() {
+    }
 
     public static PersianDT Instance() {
 
@@ -65,22 +67,19 @@ public class PersianDT {
     /**
      * Builder Pattern Style
      * <p>
-     *     this method will give you access to all method and api you need to
-     *     return current date from device/Server/pc or ...
-     *     for you of course persian date and before that make sure you
-     *     have sentence or just need date and if you just need date you
-     *     can pass {@code ""} as param to it
+     * this method will give you access to all method and api you need to
+     * return current date from device/Server/pc or ...
+     * for you of course persian date and before that make sure you
+     * have sentence or just need date and if you just need date you
+     * can pass {@code ""} as param to it
      * <p>
      * we can use this like functional Programming and more fun
      * use it like Builder pattern make devs have more fun with it
      *
-     * @param  sentence
-     *              accepte Object type because not every time
-     *              developers need or want use date in some where
-     *              in sentence mostly just need date.
-     *
+     * @param sentence accepte Object type because not every time
+     *                 developers need or want use date in some where
+     *                 in sentence mostly just need date.
      * @return A Current object
-     *
      * @see Current
      */
     public Current Current(Object sentence) {
@@ -99,24 +98,20 @@ public class PersianDT {
     /**
      * Builder Pattern Style
      * <p>
-     *     this method will give you access to all method and api you need to
-     *     return Given date to persian date from device/Server/pc or ...
-     *     for you of course persian date and before that make sure you
-     *     have sentence or just need date and if you just need date you
-     *     can pass {@code ""} as param to it
+     * this method will give you access to all method and api you need to
+     * return Given date to persian date from device/Server/pc or ...
+     * for you of course persian date and before that make sure you
+     * have sentence or just need date and if you just need date you
+     * can pass {@code ""} as param to it
      * <p>
      * we can use this like functional Programming and more fun
      * use it like Builder pattern make devs have more fun with it
      *
-     * @param  sentence
-     *              accept Object type because not every time
-     *              developers need or want use date in some where
-     *              in sentence mostly just need date.
-     * @param  date
-     *              accept enlish date as string
-     *
+     * @param sentence accept Object type because not every time
+     *                 developers need or want use date in some where
+     *                 in sentence mostly just need date.
+     * @param date     accept enlish date as string
      * @return A Generate object
-     *
      * @see Generate
      */
 
@@ -132,23 +127,19 @@ public class PersianDT {
     /**
      * Builder Pattern Style
      * <p>
-     *     this method create Ago object and will give you access to all method
-     *     and api you need for create date from your given date like <b>1 year ago</b>
-     *     return Date with ago fromat from current device/Server/pc or ...
+     * this method create Ago object and will give you access to all method
+     * and api you need for create date from your given date like <b>1 year ago</b>
+     * return Date with ago fromat from current device/Server/pc or ...
      * <p>
      * we can use this like functional Programming and more fun
      * use it like Builder pattern make devs have more fun with it
      *
-     * @param  sentence
-     *              accept Object type because not every time
-     *              developers need or want use date in some where
-     *              in sentence mostly just need date and so if you
-     *              just need date you can pass {@code ""} as param to it.
-     * @param  date
-     *              accept enlish date as string
-     *
+     * @param sentence accept Object type because not every time
+     *                 developers need or want use date in some where
+     *                 in sentence mostly just need date and so if you
+     *                 just need date you can pass {@code ""} as param to it.
+     * @param date     accept enlish date as string
      * @return A AgoTime object
-     *
      * @see AgoTime
      */
 

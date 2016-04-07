@@ -1,8 +1,8 @@
 package com.hosseini.persian.dt.PersianDate;
 
+import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,22 +44,19 @@ import java.util.logging.Logger;
 
 public final class Current extends Config {
 
-    private Logger logger = Logger.getLogger(getClass().getSimpleName());
-
     /**
      * set default format for dates its basicly now use it
      * just for return Names of the days of the week
      **/
     private static final String DEFAULT_FORMAT = "EEE";
     private final Locale loc = new Locale("en_US");
-
     /**
      * create persian date and can access it  as follow
      * {@code sc.year} and {@code sc.month} and {@code sc.date}
      * and  use it golbaly and ThreadSafe
      **/
     private final CCalender sc;
-
+    private Logger logger = Logger.getLogger(getClass().getSimpleName());
     //maybe  user dont like default SEPARATOR so can change it with Separator(param)
     private String SEPARATOR = " ";
 
@@ -90,9 +87,8 @@ public final class Current extends Config {
      * </pre>
      * <p>
      * answer will be {@code //1395#1#1}
-     * @param separator
-     *          set your seperator you want between your dates
      *
+     * @param separator set your seperator you want between your dates
      * @return a Current class Object
      */
 

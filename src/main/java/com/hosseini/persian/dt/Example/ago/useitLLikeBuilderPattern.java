@@ -2,10 +2,6 @@ package com.hosseini.persian.dt.Example.ago;
 
 import com.hosseini.persian.dt.PersianDT;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Random;
-
 /**
  * Created by abbas on 3/30/16.
  */
@@ -33,7 +29,7 @@ public class useitLLikeBuilderPattern {
                 .parse();
 
         format = "2015-11-11 04:00:00";
-        String Custom = PersianDT.Instance().Ago(format,"{DATE}").format();
+        String Custom = PersianDT.Instance().Ago(format, "{DATE}").format();
         System.out.println(Custom);
     }
 }

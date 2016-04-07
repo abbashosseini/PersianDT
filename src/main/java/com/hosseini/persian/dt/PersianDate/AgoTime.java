@@ -40,27 +40,28 @@ public final class AgoTime extends Config {
     }
 
     /**
-     *  its pass date in Ago Format and String, its more readable and userfrndly
-     *  and  Does not support the century's
+     * its pass date in Ago Format and String, its more readable and userfrndly
+     * and  Does not support the century's
      *
      * @return A Formated date in Ago Format
-     *
      **/
     public String format() {
 
         long current = System.currentTimeMillis(), timestamp = getDateContaindateObject().getTime(), diff = (current - timestamp) / 1000;
-        int amount; String what; String Extenion = "پیش";
+        int amount;
+        String what;
+        String Extenion = "پیش";
 
-        for (AgoFomat format: AgoFomat.values())
-            /** check and make sure divide (/) don't be zero and don't allow
-             * java.lang.ArithmeticException execption going to happen*/
+        for (AgoFomat format : AgoFomat.values())
+        /** check and make sure divide (/) don't be zero and don't allow
+         * java.lang.ArithmeticException execption going to happen*/
             if (diff > AgoFomat.minute.getFormatNumber())
-            // Check and know how to format thw date in ago
+                // Check and know how to format thw date in ago
                 if (diff > format.getFormatNumber()) {
                     // get digit for Ago format
                     amount = (int) (diff / format.getFormatNumber());
                     //get name (year/month/day) for Ago format
-                    what   =  format.getFormatname();
+                    what = format.getFormatname();
 
                     if (amount == 1) {
 
@@ -79,12 +80,11 @@ public final class AgoTime extends Config {
 
 
     /**
-     *  its pass date in Ago Format and String, its more readable and userfrndly
-     *  and  Does not support the century's
+     * its pass date in Ago Format and String, its more readable and userfrndly
+     * and  Does not support the century's
      *
-     * @deprecated this method has awful design .
      * @see AgoTime#format()
-     *
+     * @deprecated this method has awful design .
      */
     @Deprecated
     public String dateTime() {
@@ -101,26 +101,21 @@ public final class AgoTime extends Config {
         if (diff > 31536000) {
             amount = (int) (diff / 31536000);
             what = "سال";
-        }
-        else if (diff > 2592000) {
+        } else if (diff > 2592000) {
             amount = (int) (diff / 2592000);
             what = "ماه";
 
-        }
-        else if (diff > 604800) {
+        } else if (diff > 604800) {
             amount = (int) (diff / 604800);
             what = "هفته";
 
-        }
-        else if (diff > 86400) {
+        } else if (diff > 86400) {
             amount = (int) (diff / 86400);
             what = "روز";
-        }
-        else if (diff > 3600) {
+        } else if (diff > 3600) {
             amount = (int) (diff / 3600);
             what = "ساعت";
-        }
-        else if (diff > 60) {
+        } else if (diff > 60) {
             amount = (int) (diff / 60);
             what = "دقیقه";
         } else {
@@ -140,39 +135,38 @@ public final class AgoTime extends Config {
     }
 
 
-
     /**
      * CallBack Pattern
      * <p>
-     *      we use callback to get value from any where possible in PersianDT
-     *      and this is Asynchronous way to get date and pass it to dev/user
-     *      can get resonse and deal with it
-     *      and of course we add Builder Pattern how ? easy we return  current
-     *      object so we can access it after we implement or what ever correct
-     *      way you are gonna use.
+     * we use callback to get value from any where possible in PersianDT
+     * and this is Asynchronous way to get date and pass it to dev/user
+     * can get resonse and deal with it
+     * and of course we add Builder Pattern how ? easy we return  current
+     * object so we can access it after we implement or what ever correct
+     * way you are gonna use.
      * <p>
      *
-     * @param callBack
-     *              we have too declare callback it
-     *              how ? easy you can implement the
-     *              class or use lambda or method refrence
-     *              of course in java 8 or use Anonymous implement
-     *              for more you can see examples in Example folder
-     *
+     * @param callBack we have too declare callback it
+     *                 how ? easy you can implement the
+     *                 class or use lambda or method refrence
+     *                 of course in java 8 or use Anonymous implement
+     *                 for more you can see examples in Example folder
      * @return a AgoTime object
-     *
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java">AgoTime Example</a>
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java">Current date Example</a>
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/useItEasyWayLikeBuilderpattern.java">Current date Example</a>
      * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java">generate date Example</a>
-     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java">Genrate Date Example</a>     */
+     * @see <a href="https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java">Genrate Date Example</a>
+     */
 
     public AgoTime CallBack(CallBack callBack) {
         super.callBack = callBack;
         return this;
     }
 
-    /** get date in Ago format **/
+    /**
+     * get date in Ago format
+     **/
     public void parse() {
         String date = super.Location(format());
         super.callBack.onReceive(date);
