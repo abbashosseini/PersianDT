@@ -14,7 +14,7 @@ public class GenerateTest {
     private final static String MARKDOWN = "{DATE}";
 
     @Test
-    public void testGetFulldateinDigits() throws Exception {
+    public void testMakeSureThedateHaveCorrectResponse() throws Exception {
 
         //Today
         String DATE = "2016-04-03 10:31:00";
@@ -58,7 +58,7 @@ public class GenerateTest {
     }
 
     @Test
-    public void testGetWithMonthName() throws Exception {
+    public void testMakeSureMonthNameIsCorrectResponseForMonthInDigit() throws Exception {
 
         String DATE = "2016-04-04 10:31:00";
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getWithMonthName(), "1395 فروردین 16");
@@ -86,7 +86,7 @@ public class GenerateTest {
     }
 
     @Test
-    public void testGetMonthAndDay() throws Exception {
+    public void testTestTheMOnthandDayWitoutYear() throws Exception {
 
         String DATE = "2010-08-01 00:00:00";
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getMonthAndDay(), "مرداد 10");
@@ -120,7 +120,7 @@ public class GenerateTest {
     }
 
     @Test
-    public void testGetDayName() throws Exception {
+    public void testMakeSureDayNameIsCorrectForDaydigit() throws Exception {
 
         String DATE = "2016-03-26 00:00:00";
         Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getDayDigit(), 7);
@@ -138,12 +138,17 @@ public class GenerateTest {
     }
 
     @Test
-    public void testGetDayDigit() throws Exception {
-
-    }
-
-    @Test
     public void testGetYear() throws Exception {
+
+        String DATE = "2016-03-26 00:00:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1395);
+
+
+        DATE = "2011-11-16 00:00:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1390);
+
+        DATE = "2008-08-08 00:00:00";
+        Assert.assertEquals(PersianDT.Instance().generate(DATE, MARKDOWN).getYear(), 1387);
 
     }
 }
