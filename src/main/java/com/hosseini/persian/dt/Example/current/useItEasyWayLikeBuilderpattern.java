@@ -3,6 +3,8 @@ package com.hosseini.persian.dt.Example.current;
 import com.hosseini.persian.dt.PersianDT;
 import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 
+import java.util.Date;
+
 /**
  * Created by abbas on 3/30/16.
  */
@@ -16,27 +18,15 @@ public class useItEasyWayLikeBuilderpattern implements CallBack {
 
     public void date() {
 
+
+        //Today id 1395/1/21
         PersianDT
                 .Instance()
-                .Current("Current date is {DATE} .")
-                .Separator("|")
-                .CallBack(this)
-                .WithMonthName();
+                .generate(new java.sql.Date(System.currentTimeMillis()), "{DATE}")
+                .CallBack(System.out::println)
+                .Separator("/")
+                .generateWithMonthName();
 
-        System.out.println();
-
-        PersianDT
-                .Instance()
-                .Current("Today {DATE} in Iran.")
-                .Separator("#")
-                .CallBack(new CallBack() {
-                    @Override
-                    public void onReceive(String date) {
-                        //Another way to use CallBacks
-                        System.out.println(date);
-                    }
-                })
-                .WithDigit();
 
         System.out.println();
 
@@ -44,20 +34,20 @@ public class useItEasyWayLikeBuilderpattern implements CallBack {
 
         PersianDT
                 .Instance()
-                .Current("Wendsday equle to {DATE} in Persian.")
+                .generate(new Date(),"Wendsday equle to {DATE} in Persian.")
                 .Separator("/")
                         //use methiod reference
                         //for example System.out::println
                 .CallBack(System.out::println)
-                .WithMonthName();
+                .generateWithMonthName();
 
         System.out.println();
 
         PersianDT
                 .Instance()
-                .Current("Current persian date in your device is {DATE} witout year.")
+                .generate(new Date(),"Current persian date in your device is {DATE} witout year.")
                 .CallBack(this)
-                .WithoutYear();
+                .generateWithoutYear();
 
 
     }

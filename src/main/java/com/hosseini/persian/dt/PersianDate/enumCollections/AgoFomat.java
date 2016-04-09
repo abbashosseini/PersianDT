@@ -1,7 +1,8 @@
 package com.hosseini.persian.dt.PersianDate.enumCollections;
 
 /**
- * Created by abbas on 4/4/16.
+ * this enum are keep the date format name and format number
+ *
  */
 public enum AgoFomat {
     year("سال", 31536000),
@@ -10,7 +11,7 @@ public enum AgoFomat {
     day("روز", 86400),
     hour("ساعت", 3600),
     minute("دقیقه", 60),
-    Know(" ثانیه پیش", 0);
+    now("ثانیه پیش", 0);
 
     private String name;
     private int format;

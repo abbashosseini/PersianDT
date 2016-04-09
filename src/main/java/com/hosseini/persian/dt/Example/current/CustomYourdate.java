@@ -2,6 +2,9 @@ package com.hosseini.persian.dt.Example.current;
 
 import com.hosseini.persian.dt.PersianDT;
 import com.hosseini.persian.dt.PersianDate.Current;
+import com.hosseini.persian.dt.PersianDate.Generate;
+
+import java.util.Date;
 
 /**
  * Created by abbas on 3/30/16.
@@ -15,54 +18,52 @@ public class CustomYourdate {
 
     public void date() {
 
-        Current current = PersianDT
+        Generate current = PersianDT
                 .Instance()
-                .Current("{DATE}")
+                .generate(new Date(), "{DATE}")
                 .Separator("-");
 
         System.out.println(
                 String.format(
                         "%s/%s/%s",
-                        current.Year(),
+                        current.getYear(),
                         //return Month as int
-                        current.monthDigit(),
-                        current.Day()
+                        current.getJustMonthDigit(),
+                        current.getDayDigit()
                 )
         );
 
         System.out.println(
                 String.format(
                         "%s-%s-%s",
-                        current.Year(),
+                        current.getYear(),
                         //return Month as String
-                        current.Day(),
-                        current.monthName()
-                )
-        );
+                        current.getDayName(),
+                        current.getJustMonthDigit())
+                );
 
 
         System.out.println(
                 String.format(
                         "%s-%s-%s -> %s",
-                        current.Year(),
+                        current.getYear(),
                         //return Month as String
-                        current.monthName(),
-                        current.Day(),
-                        current.dayName()
-
+                        current.getJustMonthDigit(),
+                        current.getDayDigit(),
+                        current.getDayName()
                 )
         );
 
         System.out.println(
-                current.DigitAndLetters()
+                current.getWithMonthName()
         );
 
         System.out.println(
-                current.fullDigit()
+                current.getWithFullDateInDigits()
         );
 
         System.out.println(
-                current.MonthAndDay()
+                current.getMonthAndDay()
         );
 
     }

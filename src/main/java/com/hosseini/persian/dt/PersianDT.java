@@ -33,7 +33,7 @@ import java.util.Locale;
  * to control your instances
  * </p>
  *
- * @author Abbas Hosseini  <mrabbashosseini@gmail.com>
+ * @author Abbas Hosseini (mrabbashosseini@gmail.com)
  * @version 0.1
  * @since 3/8/16
  */
@@ -81,11 +81,12 @@ public class PersianDT {
      *                 in sentence mostly just need date.
      * @return A Current object
      * @see Current
+     * @param date
+     *              get current date from the system
      */
-    public Current Current(Object sentence) {
+    public Current Current(Date date, Object sentence) {
 
-        final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date());
-
+        final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(date);
         if (sentence instanceof String)
             return new Current(formatDate, (String) sentence);
 
@@ -122,6 +123,17 @@ public class PersianDT {
 
         else
             return new Generate(date, "");
+    }
+
+    public Generate generate(Date date, Object sentence) {
+
+        final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(date);
+
+        if (sentence instanceof String)
+            return new Generate(formatDate, (String) sentence);
+
+        else
+            return new Generate(formatDate, "");
     }
 
     /**

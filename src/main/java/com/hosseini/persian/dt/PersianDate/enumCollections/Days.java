@@ -1,7 +1,7 @@
 package com.hosseini.persian.dt.PersianDate.enumCollections;
 
 /**
- * Created by abbas on 3/29/16.
+ * names of the day of the week
  */
 public enum Days {
     Sun("يکشنبه"),

@@ -41,7 +41,7 @@ import java.util.logging.Logger;
  * @see Config
  * @since 3/1/2016
  */
-
+@Deprecated
 public final class Current extends Config {
 
     /**

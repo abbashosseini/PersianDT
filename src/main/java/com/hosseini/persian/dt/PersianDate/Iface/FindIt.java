@@ -17,6 +17,11 @@ package com.hosseini.persian.dt.PersianDate.Iface;
  */
 
 /**
+ * this interface implement theLocation method in super class Config
+ * it sjob fint place for date object in text/String/....
+ *
+ *
+ * @see com.hosseini.persian.dt.PersianDate.Config#Location(String)
  * @since 3/8/16.
  */
 public interface FindIt {

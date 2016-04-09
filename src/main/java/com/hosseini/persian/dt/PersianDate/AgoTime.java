@@ -34,6 +34,20 @@ import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
 
 public final class AgoTime extends Config {
 
+    /**
+     * you can use Enum AgoFomat instead thid
+     * @see AgoFomat
+     * */
+    public static final String YEAR_AGO = "سال";
+    public static final String MONTH_AGO = "ماه";
+    public static final String WEEK_AGO = "هفته";
+    public static final String DAY_AGO = "روز";
+    public static final String HOUR_AGO = "ساعت";
+    public static final String MIN_AGO = "دقیقه";
+    public static final String SEC_AGO = "ثانیه";
+    public static final String YESTERDAY = "دیروز";
+    public static final String Extenion = "پیش";
+
     //StateLess
     public AgoTime(String date, String sentence) {
         super(date, sentence);
@@ -50,7 +64,7 @@ public final class AgoTime extends Config {
         long current = System.currentTimeMillis(), timestamp = getDateContaindateObject().getTime(), diff = (current - timestamp) / 1000;
         int amount;
         String what;
-        String Extenion = "پیش";
+
 
         for (AgoFomat format : AgoFomat.values())
         /** check and make sure divide (/) don't be zero and don't allow
@@ -75,7 +89,7 @@ public final class AgoTime extends Config {
                 }
 
         amount = (int) (diff);
-        return String.format("%d %s", amount, AgoFomat.Know.getFormatname());
+        return String.format("%d %s", amount, AgoFomat.now.getFormatname());
     }
 
 
@@ -101,38 +115,38 @@ public final class AgoTime extends Config {
 
         if (diff > 31536000) {
             amount = (int) (diff / 31536000);
-            what = "سال";
+            what = YEAR_AGO;
         } else if (diff > 2592000) {
             amount = (int) (diff / 2592000);
-            what = "ماه";
+            what = MONTH_AGO;
 
         } else if (diff > 604800) {
             amount = (int) (diff / 604800);
-            what = "هفته";
+            what = WEEK_AGO;
 
         } else if (diff > 86400) {
             amount = (int) (diff / 86400);
-            what = "روز";
+            what = DAY_AGO;
         } else if (diff > 3600) {
             amount = (int) (diff / 3600);
-            what = "ساعت";
+            what =HOUR_AGO;
         } else if (diff > 60) {
             amount = (int) (diff / 60);
-            what = "دقیقه";
+            what = MIN_AGO;
         } else {
             amount = (int) (diff);
-            return amount + " ثانیه پیش";
+            return String.format("%d %s %s", amount, SEC_AGO, Extenion);
         }
 
         if (amount == 1) {
-            if (what.equals("روز")) {
-                return "دیروز";
-            } else if (what.equals("هفته") || what.equals("ماه") || what.equals("سال")) {
-                return what + " پیش ";
+            if (what.equals(DAY_AGO)) {
+                return YESTERDAY;
+            } else if (what.equals(WEEK_AGO) || what.equals(MONTH_AGO) || what.equals(YEAR_AGO)) {
+                return String.format("%s %s", what, Extenion);
             }
         }
 
-        return String.format("%s %s %s ", amount, what, "پیش ");
+        return String.format("%s %s %s ", amount, what, Extenion);
     }
 
 

@@ -1,7 +1,7 @@
 package com.hosseini.persian.dt.PersianDate.enumCollections;
 
 /**
- * Created by abbas on 3/29/16.
+ * Month name and month number
  */
 public enum Months {
 
