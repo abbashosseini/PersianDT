@@ -20,8 +20,7 @@ and PersianDT is **ThreadSafe** and its build on top of 3 design pattern
 * Builder Pattern
 * Singleton Pattern
 
-you can use use it any where JDK Rnning **Android** or **JAVAEE** or **JAVASE** or whatEver so lets see what PersianDT 
-<br/>can do :
+###What can i do :
 
 * can create dates direclty from System 
 * can Create dates from Given date
@@ -45,7 +44,8 @@ in PersianDt you can fill and get response in couple of ways like :
  3. Anonymous implement
  
 
-###if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/)
+### if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/)
+Current Class **Deprecated**
 
 ```java
 
@@ -55,81 +55,88 @@ in PersianDt you can fill and get response in couple of ways like :
               new useItEasyWayLikeBuilderpattern().date();
         }
         
-         public void date() {
-             PersianDT
+ public void date() {
+     
+     
+  PersianDT
+          .Instance()
+          .generate(new Date(),"Current persian date in your device is {DATE} witout year.")
+          .CallBack(this)
+          .generateWithoutYear();
+     
+ }
+
+ @Override
+ public void onReceive(String date) {
+       System.out.println(date);
+ }
+
+```
+
+
+```java
+
+        // in java 8
+        int random = new Random().nextInt(12);
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, random);
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+
+        //Lambda
+        PersianDT
                 .Instance()
-                .Current("Current date is {DATE} .")
-                .Separator("|")
-                .CallBack(this)
-                .WithMonthName();
-         }
-
-       @Override
-       public void onReceive(String date) {
-             System.out.println(date);
-       }
-
-```
-
-
-```java
-
-//Lambda/Method Refernce (JAVA8)
-
-   String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-   //Lambda
-   PersianDT
-     .Instance()
-     .generate(format, "{DATE}")
-     .CallBack(date -> System.out.println(date))
-     .Separator("_")
-     .generateFullDate();
+                .generate(format, "{DATE}")
+                .CallBack(date -> System.out.println(date))
+                .Separator("_")
+                .generateFullDate();
 
 
 
-    //method refr3nce
-    PersianDT
-      .Instance()
-      .generate(format, "{DATE}")
-      .CallBack(System.out::println)
-      .Separator("--")
-      .generateWithMonthName();
+        //method reference
+        PersianD
+                .Instance()
+                .generate(format, "{DATE}")
+                .CallBack(System.out::println)
+                .Separator("--")
+                .generateWithMonthName();
 
 ```
 
 ```java
 
-//Anonymous implement
-
+    //Anonymous implement
     PersianDT
-    .Instance()
-    .generate(format, "{DATE}")
-    .CallBack(new CallBack() {
-           @Override
-           public void onReceive(String date) {
-           System.out.println(date);
-           }
-    })
-    .Separator(" | ")
-    .generateWithMonthName();
+            .Instance()
+            .generate(format, "{DATE}")
+            .CallBack(new CallBack() {
+                @Override
+                public void onReceive(String date) {
+                    System.out.println(date);
+                }
+            })
+            .Separator(" | ")
+            .generateWithMonthName();
 
 ```
 
 #### Initializing :
 
-#####you can use Builder Pattern Style :
+##### you can use Builder Pattern Style :
 
 ```Java
-PersianDT
-   .Instance()
-   .generate(format, "{DATE}")
-   .CallBack(System.out::println)
-   .Separator("--")
-   .generateWithMonthName();
-
+  PersianDT
+     .Instance()
+     .generate(format, "{DATE}")
+     .CallBack(System.out::println)
+     .Separator("--")
+     .generateWithMonthName();
 ```
+you can see (BuilderPattern) Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java#L37-L43) 
 
-you can see full Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java#L37-L43) 
+#### what if i need day, month, year and more in _separate_ :
+
+you can create instance of `Generate` class and keep the instance and get any part you want separately 
+please check this [Example](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/generate/CustomDate.java)
   
 #####you can use it to create appropriate instance :  
 
