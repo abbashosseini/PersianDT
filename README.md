@@ -45,7 +45,7 @@ in PersianDt you can fill and get response in couple of ways like :
  
 
 ### if you have any trouble Read [JavaDoc!](http://abbashosseini.github.io/PersianDT/)
-Current Class **Deprecated**
+[Current](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/PersianDate/Current.java#L44-L45) Class **Deprecated**
 
 ```java
 
