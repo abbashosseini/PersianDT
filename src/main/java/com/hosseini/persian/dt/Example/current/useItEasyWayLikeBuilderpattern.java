@@ -22,7 +22,7 @@ public class useItEasyWayLikeBuilderpattern implements CallBack {
         //Today id 1395/1/21
         PersianDT
                 .Instance()
-                .generate(new java.sql.Date(System.currentTimeMillis()), "{DATE}")
+                .generate(new Date(), "{DATE}")
                 .CallBack(System.out::println)
                 .Separator("/")
                 .generateWithMonthName();

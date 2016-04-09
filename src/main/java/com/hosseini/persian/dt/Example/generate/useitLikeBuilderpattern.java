@@ -35,7 +35,7 @@ public class useitLikeBuilderpattern {
                 .generateFullDate();
 
 
-        //method refr3nce
+        //method reference
         PersianDT
                 .Instance()
                 .generate(format, "{DATE}")

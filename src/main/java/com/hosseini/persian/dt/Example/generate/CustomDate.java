@@ -13,11 +13,10 @@ public class CustomDate {
 
     public static void main(String[] s) {
 
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 7);
 
-        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+        String format = format(Calendar.DATE, -7);
 
+        // dot it separately
         Generate generate = PersianDT
                 .Instance()
                 .generate(format, "{DATE}")
@@ -30,7 +29,24 @@ public class CustomDate {
         System.out.println(generate.getJustMonthDigit());
         System.out.println(generate.getWithMonthName());
 
+
+        //defualt format (one time)
+
+        format = format(Calendar.MONTH, -1);
+        PersianDT
+                .Instance()
+                .generate(format, "{DATE}")
+                .CallBack(System.out::println)
+                .Separator("/")
+                .generateWithMonthName();
+
         // all you can see i seperate alll too one by one you custom your dates .
 
+    }
+
+    public static String format(int format, int minus){
+        Calendar cal = Calendar.getInstance();
+        cal.add(format, minus);
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
     }
 }
