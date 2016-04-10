@@ -148,6 +148,10 @@ please check this [Example](https://github.com/abbashosseini/PersianDT/blob/mast
 
 [Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
 
+## installing :
+
+download the jar file from [HERE](https://github.com/abbashosseini/PersianDT/releases/download/0.1/PersianDT.jar)
+
 ###License
        Copyright (C) 2016 AbbasHosseini
 
