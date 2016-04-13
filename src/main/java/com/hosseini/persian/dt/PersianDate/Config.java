@@ -60,7 +60,7 @@ public class Config implements FindIt {
         try {
             dateContainDateObject = format.parse(this.dateContainStringObject);
         } catch (ParseException e) {
-            log.warning("Check out maybe your date is not match the format, please check line 61 for that ");
+            log.warning("Check out maybe your date is not match the format");
         }
     }
 
