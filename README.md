@@ -131,7 +131,7 @@ in PersianDt you can fill and get response in couple of ways like :
      .Separator("--")
      .generateWithMonthName();
 ```
-you can see (BuilderPattern) Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java#L37-L43) 
+you can see (BuilderPattern) Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java) 
 
 #### what if i need day, month, year and more in _separate_ :
 
@@ -140,9 +140,9 @@ please check this [Example](https://github.com/abbashosseini/PersianDT/blob/mast
   
 #####you can use it to create appropriate instance :  
 
-   [Example 1- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/generate/CustomDate.java)
+   [Example 1- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/generate/CustomDate.java)
    
-   [Example 2- Customize your date](https://github.com/abbashosseinai/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
+   [Example 2- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
    
 #####Create date in Ago Format :
 
