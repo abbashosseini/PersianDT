@@ -150,7 +150,7 @@ please check this [Example](https://github.com/abbashosseini/PersianDT/blob/mast
 
 ## installing :
 
-download the jar file from [HERE](https://github.com/abbashosseini/PersianDT/releases/download/0.1/PersianDT.jar)
+download the jar file from [HERE](https://github.com/abbashosseini/PersianDT/releases/download/v0.1/PersianDT.jar)
 
 ###License
        Copyright (C) 2016 AbbasHosseini
