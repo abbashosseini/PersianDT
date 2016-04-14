@@ -146,7 +146,7 @@ please check this [Example](https://github.com/abbashosseini/PersianDT/blob/mast
    
 #####Create date in Ago Format :
 
-[Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
+[Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
 
 ## installing :
 
