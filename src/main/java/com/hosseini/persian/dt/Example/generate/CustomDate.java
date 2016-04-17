@@ -18,9 +18,8 @@ public class CustomDate {
 
         // dot it separately
         Generate generate = PersianDT
-                .Instance()
-                .generate(format, "{DATE}")
-                .Separator("->");
+                                .Instance()
+                                .generate(format, "{DATE}");
 
         System.out.println(generate.getWithFullDateInDigits());
         System.out.println(generate.getDayDigit());
@@ -30,7 +29,7 @@ public class CustomDate {
         System.out.println(generate.getWithMonthName());
 
 
-        //defualt format (one time)
+        //use default format
 
         format = format(Calendar.MONTH, -1);
         PersianDT
