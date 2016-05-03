@@ -29,27 +29,16 @@ package com.hosseini.persian.dt.PersianDate;
  * @since 3/1/2016
  */
 
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
+
+import java.text.ParseException;
 
 public final class AgoTime extends Config {
 
-    /**
-     * you can use Enum AgoFomat instead thid
-     * @see AgoFomat
-     * */
-    public static final String YEAR_AGO = "سال";
-    public static final String MONTH_AGO = "ماه";
-    public static final String WEEK_AGO = "هفته";
-    public static final String DAY_AGO = "روز";
-    public static final String HOUR_AGO = "ساعت";
-    public static final String MIN_AGO = "دقیقه";
-    public static final String SEC_AGO = "ثانیه";
-    public static final String YESTERDAY = "دیروز";
-    public static final String Extenion = "پیش";
+    private CallbackHolder holder;
 
-    //StateLess
-    public AgoTime(String date, String sentence) {
+
+    public AgoTime(String date, String sentence){
         super(date, sentence);
     }
 
@@ -61,7 +50,9 @@ public final class AgoTime extends Config {
      **/
     public String format() {
 
-        long current = System.currentTimeMillis(), timestamp = getDateContaindateObject().getTime(), diff = (current - timestamp) / 1000;
+        long current = System.currentTimeMillis(),
+                        timestamp = getDateContaindateObject().getTime(),
+                        diff = (current - timestamp) / 1000;
         int amount;
         String what;
 
@@ -85,7 +76,7 @@ public final class AgoTime extends Config {
 
                     }
 
-                    return String.format("%s %s %s", amount, what, Extenion);
+                    return String.format("%s %s %s", amount, what, FormatNames.Extenion());
                 }
 
         amount = (int) (diff);
@@ -115,38 +106,38 @@ public final class AgoTime extends Config {
 
         if (diff > 31536000) {
             amount = (int) (diff / 31536000);
-            what = YEAR_AGO;
+            what = FormatNames.YearAgo();
         } else if (diff > 2592000) {
             amount = (int) (diff / 2592000);
-            what = MONTH_AGO;
+            what = FormatNames.MonthAgo();
 
         } else if (diff > 604800) {
             amount = (int) (diff / 604800);
-            what = WEEK_AGO;
+            what = FormatNames.WeekAgo();
 
         } else if (diff > 86400) {
             amount = (int) (diff / 86400);
-            what = DAY_AGO;
+            what = FormatNames.DayAgo();
         } else if (diff > 3600) {
             amount = (int) (diff / 3600);
-            what =HOUR_AGO;
+            what = FormatNames.HourAgo();
         } else if (diff > 60) {
             amount = (int) (diff / 60);
-            what = MIN_AGO;
+            what = FormatNames.MinAgo();
         } else {
             amount = (int) (diff);
-            return String.format("%d %s %s", amount, SEC_AGO, Extenion);
+            return String.format("%d %s %s", amount, FormatNames.SecAgo(), FormatNames.Extenion());
         }
 
         if (amount == 1) {
-            if (what.equals(DAY_AGO)) {
-                return YESTERDAY;
-            } else if (what.equals(WEEK_AGO) || what.equals(MONTH_AGO) || what.equals(YEAR_AGO)) {
-                return String.format("%s %s", what, Extenion);
+            if (what.equals(FormatNames.DayAgo())) {
+                return FormatNames.YESTERDAY();
+            } else if (what.equals(FormatNames.WeekAgo()) || what.equals(FormatNames.MonthAgo()) || what.equals(FormatNames.YearAgo())) {
+                return String.format("%s %s", what, FormatNames.Extenion());
             }
         }
 
-        return String.format("%s %s %s ", amount, what, Extenion);
+        return String.format("%s %s %s ", amount, what, FormatNames.Extenion());
     }
 
 
@@ -175,7 +166,7 @@ public final class AgoTime extends Config {
      */
 
     public AgoTime CallBack(CallBack callBack) {
-        super.callBack = callBack;
+        holder = new CallbackHolder(callBack);
         return this;
     }
 
@@ -184,7 +175,7 @@ public final class AgoTime extends Config {
      **/
     public void parse() {
         String date = super.Location(format());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 }

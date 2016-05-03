@@ -33,7 +33,6 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
 
@@ -54,6 +53,7 @@ public final class Generate extends Config {
     private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final Logger logger = Logger.getLogger(Generate.class.getSimpleName());
     private final DateFormat dateFormat;
+    private CallbackHolder holder;
 
     /**
      * create persian date and can access it  as follow
@@ -126,7 +126,7 @@ public final class Generate extends Config {
      * @return a formated String contain just digit
      */
     public String getWithFullDateInDigits() {
-        return String.format("%d%s%d%s%d", sc.year, SEPARATOR, sc.month, SEPARATOR, sc.date);
+        return String.format("%d%s%d%s%d", sc.getYear().get(), SEPARATOR, sc.getMonth().get(), SEPARATOR, sc.getDate().get());
     }
 
     /**
@@ -138,7 +138,7 @@ public final class Generate extends Config {
      * @return a formated String
      */
     public String getWithMonthName() {
-        return String.format("%d%s%s%s%d", sc.year, SEPARATOR, findMonth(), SEPARATOR, sc.date);
+        return String.format("%d%s%s%s%d", sc.getYear().get(), SEPARATOR, findMonth(), SEPARATOR, sc.getDate().get());
     }
 
     /**
@@ -147,7 +147,7 @@ public final class Generate extends Config {
      * @return a String
      */
     public int getJustMonthDigit() {
-        return sc.month;
+        return sc.getMonth().get();
     }
 
     public String getJustMonthName() {
@@ -158,7 +158,7 @@ public final class Generate extends Config {
 
         String monthName = "";
         for (Months months : Months.values())
-            if (Objects.equals(months.getMonthAsInt(), sc.month))
+            if (Objects.equals(months.getMonthAsInt(), sc.getMonth().get()))
                 monthName = months.getMonthAsString();
 
         return monthName;
@@ -173,7 +173,7 @@ public final class Generate extends Config {
      */
     public String getMonthAndDay() {
 
-        return String.format("%s%s%d", findMonth(), SEPARATOR, sc.date);
+        return String.format("%s%s%d", findMonth(), SEPARATOR, sc.getDate().get());
     }
 
     /**
@@ -214,7 +214,7 @@ public final class Generate extends Config {
      */
     public int getDayDigit() {
 
-        return sc.date;
+        return sc.getDate().get();
     }
 
     /**
@@ -223,7 +223,7 @@ public final class Generate extends Config {
      * @return a int
      */
     public int getYear() {
-        return sc.year;
+        return sc.getYear().get();
     }
 
 
@@ -252,7 +252,7 @@ public final class Generate extends Config {
      */
 
     public Generate CallBack(CallBack callBack) {
-        super.callBack = callBack;
+        holder = new CallbackHolder(callBack);
         return this;
     }
 
@@ -270,7 +270,7 @@ public final class Generate extends Config {
     public void generateFullDate() {
 
         String date = super.Location(getWithFullDateInDigits());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 
@@ -287,7 +287,7 @@ public final class Generate extends Config {
     public void generateWithMonthName() {
 
         String date = super.Location(getWithMonthName());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 
@@ -304,7 +304,7 @@ public final class Generate extends Config {
     public void generateWithoutYear() {
 
         String date = super.Location(getMonthAndDay());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 }

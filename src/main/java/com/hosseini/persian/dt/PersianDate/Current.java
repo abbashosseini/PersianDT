@@ -1,6 +1,5 @@
 package com.hosseini.persian.dt.PersianDate;
 
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
 import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
 
@@ -50,6 +49,7 @@ public final class Current extends Config {
      **/
     private static final String DEFAULT_FORMAT = "EEE";
     private final Locale loc = new Locale("en_US");
+    private CallbackHolder holder;
     /**
      * create persian date and can access it  as follow
      * {@code sc.year} and {@code sc.month} and {@code sc.date}
@@ -107,9 +107,9 @@ public final class Current extends Config {
     public String DigitAndLetters() {
 
         //At this time we have persian date contains just numbers
-        String year = String.valueOf(sc.year);
-        String month = String.valueOf(sc.month);
-        String day = String.valueOf(sc.date);
+        String year = String.valueOf(sc.getYear().get());
+        String month = String.valueOf(sc.getMonth().get());
+        String day = String.valueOf(sc.getDate().get());
 
         // in here we put Month name
         String monthName = String.valueOf("");
@@ -132,7 +132,7 @@ public final class Current extends Config {
         return String.format(
                 loc,
                 "%d%s%d%s%d",
-                sc.year, SEPARATOR, sc.month, SEPARATOR, sc.date);
+                sc.getYear().get(), SEPARATOR, sc.getMonth().get(), SEPARATOR, sc.getDate().get());
     }
 
 
@@ -140,7 +140,7 @@ public final class Current extends Config {
      * @return a day of the month
      */
     public int Day() {
-        return sc.date;
+        return sc.getDate().get();
     }
 
 
@@ -178,7 +178,7 @@ public final class Current extends Config {
 
         String monthName = "";
         for (Months months : Months.values())
-            if (Objects.equals(months.getMonthAsInt(), sc.month))
+            if (Objects.equals(months.getMonthAsInt(), sc.getMonth().get()))
                 monthName = months.getMonthAsString();
 
         return monthName;
@@ -188,14 +188,14 @@ public final class Current extends Config {
      * @return a month number
      */
     public int monthDigit() {
-        return sc.month;
+        return sc.getMonth().get();
     }
 
     /**
      * @return a year
      */
     public int Year() {
-        return sc.year;
+        return sc.getYear().get();
     }
 
     /**
@@ -205,13 +205,13 @@ public final class Current extends Config {
 
         String monthName = "";
         for (Months months : Months.values())
-            if (Objects.equals(months.getMonthAsInt(), sc.month))
+            if (Objects.equals(months.getMonthAsInt(), sc.getMonth().get()))
                 monthName = months.getMonthAsString();
 
         return String.format(
                 loc,
                 "%s%s%d",
-                monthName, SEPARATOR, sc.date);
+                monthName, SEPARATOR, sc.getDate().get());
     }
 
 
@@ -240,7 +240,7 @@ public final class Current extends Config {
      */
 
     public Current CallBack(CallBack callBack) {
-        super.callBack = callBack;
+        holder = new CallbackHolder(callBack);
         return this;
 
     }
@@ -253,7 +253,7 @@ public final class Current extends Config {
 
         String date = super.Location(fullDigit());
         //fill callback
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 
@@ -264,7 +264,7 @@ public final class Current extends Config {
     public void WithMonthName() {
 
         String date = super.Location(DigitAndLetters());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 
@@ -275,7 +275,7 @@ public final class Current extends Config {
     public void WithoutYear() {
 
         String date = super.Location(MonthAndDay());
-        super.callBack.onReceive(date);
+        holder.getCallBack().onReceive(date);
     }
 
 }

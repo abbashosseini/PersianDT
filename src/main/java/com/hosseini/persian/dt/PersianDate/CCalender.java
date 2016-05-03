@@ -2,6 +2,7 @@ package com.hosseini.persian.dt.PersianDate;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /*
  * Copyright (C) 2015 Abbashosseini
@@ -21,30 +22,43 @@ import java.util.Date;
 
 class CCalender {
 
-    int date;
-    int month;
-    int year;
+    private final AtomicInteger date = new AtomicInteger();
+    private final AtomicInteger month = new AtomicInteger();
+    private final AtomicInteger year = new AtomicInteger();
 
     /**
      * Constructs a new CCalendar.
      */
     public CCalender() {
-        Date MiladiDate = new Date();
-        calcSolarCalendar(MiladiDate);
+        CalendarCalc(new Date());
     }
-
 
     protected CCalender(Date date) {
-        calcSolarCalendar(date);
+        CalendarCalc(date);
     }
+
 
     /**
      * Getter for property 'date'.
      *
      * @return Value for property 'date'.
      */
-    protected int getDate() {
+    protected AtomicInteger getDate() {
         return date;
+    }
+
+    /**+
+     * @return AtomicInteger
+     */
+    public AtomicInteger getMonth() {
+        return month;
+    }
+
+    /**+
+     * @return AtomicInteger
+     */
+    public AtomicInteger getYear() {
+        return year;
     }
 
     /**
@@ -52,14 +66,16 @@ class CCalender {
      *
      * @param date Value to set for property 'date'.
      */
+
     protected void setDate(int date) {
-        this.date = date;
+        this.date.set(date);
     }
 
-    private void calcSolarCalendar(Date MiladiDate) {
+    private void CalendarCalc(Date MiladiDate) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(MiladiDate);
+
         int ld;
         int miladiYear = calendar.get(Calendar.YEAR);
         int miladiMonth = calendar.get(Calendar.MONTH) + 1;
@@ -95,36 +111,36 @@ class CCalender {
         buf2[11] = 335;
 
         if ((miladiYear % 4) != 0) {
-            date = buf1[miladiMonth - 1] + miladiDate;
+            date.set(buf1[miladiMonth - 1] + miladiDate);
 
-            if (date > 79) {
-                date = date - 79;
-                if (date <= 186) {
-                    switch (date % 31) {
+            if (date.get() > 79) {
+                date.set(date.get() - 79);
+                if (date.get() <= 186) {
+                    switch (date.get() % 31) {
                         case 0:
-                            month = date / 31;
-                            date = 31;
+                            month.set(date.get() / 31);
+                            date.set(31);
                             break;
                         default:
-                            month = (date / 31) + 1;
-                            date = (date % 31);
+                            month.set((date.get() / 31) + 1);
+                            date.set(date.get() % 31);
                             break;
                     }
-                    year = miladiYear - 621;
+                    year.set(miladiYear - 621);
                 } else {
-                    date = date - 186;
+                    date.set(date.get() - 186);
 
-                    switch (date % 30) {
+                    switch (date.get() % 30) {
                         case 0:
-                            month = (date / 30) + 6;
-                            date = 30;
+                            month.set((date.get() / 30) + 6);
+                            date.set(30);
                             break;
                         default:
-                            month = (date / 30) + 7;
-                            date = (date % 30);
+                            month.set((date.get() / 30) + 7);
+                            date.set(date.get() % 30);
                             break;
                     }
-                    year = miladiYear - 621;
+                    year.set(miladiYear - 621);
                 }
             } else {
                 if ((miladiYear > 1996) && (miladiYear % 4) == 1) {
@@ -132,72 +148,72 @@ class CCalender {
                 } else {
                     ld = 10;
                 }
-                date = date + ld;
+                date.set(date.get() + ld);
 
-                switch (date % 30) {
+                switch (date.get() % 30) {
                     case 0:
-                        month = (date / 30) + 9;
-                        date = 30;
+                        month.set((date.get() / 30) + 9);
+                        date.set(30);
                         break;
                     default:
-                        month = (date / 30) + 10;
-                        date = (date % 30);
+                        month.set((date.get() / 30) + 10);
+                        date.set(date.get() % 30);
                         break;
                 }
-                year = miladiYear - 622;
+                year.set(miladiYear - 622);
             }
         } else {
-            date = buf2[miladiMonth - 1] + miladiDate;
+            date.set(buf2[miladiMonth - 1] + miladiDate);;
 
             if (miladiYear >= 1996) {
                 ld = 79;
             } else {
                 ld = 80;
             }
-            if (date > ld) {
-                date = date - ld;
+            if (date.get() > ld) {
+                date.set(date.get() - ld);
 
-                if (date <= 186) {
-                    switch (date % 31) {
+                if (date.get() <= 186) {
+                    switch (date.get() % 31) {
                         case 0:
-                            month = (date / 31);
-                            date = 31;
+                            month.set(date.get() / 31);
+                            date.set(31);
                             break;
                         default:
-                            month = (date / 31) + 1;
-                            date = (date % 31);
+                            month.set((date.get() / 31) + 1);
+                            date.set(date.get() % 31);
                             break;
                     }
-                    year = miladiYear - 621;
+                    year.set(miladiYear - 621);
                 } else {
-                    date = date - 186;
+                    date.set(date.get() - 186);
 
-                    switch (date % 30) {
+                    switch (date.get() % 30) {
                         case 0:
-                            month = (date / 30) + 6;
-                            date = 30;
+                            month.set ((date.get() / 30) + 6);
+                            date.set(30);
                             break;
                         default:
-                            month = (date / 30) + 7;
-                            date = (date % 30);
+                            month.set ((date.get() / 30) + 7);
+                            date.set(date.get() % 30);
                             break;
                     }
-                    year = miladiYear - 621;
+                    year.set(miladiYear - 621);
                 }
             } else {
-                date = date + 10;
+                date.set(date.get() + 10);
 
-                switch (date % 30) {
+                switch (date.get() % 30) {
                     case 0:
-                        month = (date / 30) + 9;
-                        date = 30;
+                        month.set((date.get() / 30) + 9);
+                        date.set(30);
                         break;
                     default:
-                        month = (date / 30) + 10;
-                        date = (date % 30);
+                        month.set((date.get() / 30) + 10);
+                        date.set(date.get() % 30);
                         break;
                 }
-                year = miladiYear - 622;
+                year.set(miladiYear - 622);
             }
 
         }

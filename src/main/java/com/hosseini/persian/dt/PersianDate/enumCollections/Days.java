@@ -23,7 +23,7 @@ public enum Days {
      *
      * @return Value for property 'day'.
      */
-    public synchronized String getDay() {
+    public String getDay() {
         return day;
     }
 

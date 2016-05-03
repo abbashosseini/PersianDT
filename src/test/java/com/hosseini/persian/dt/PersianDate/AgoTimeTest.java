@@ -33,19 +33,19 @@ public class AgoTimeTest extends TestCase {
 
 
         String yesterday = PersianDT.Instance().Ago(getdateFrompass(-1), "{DATE}").format();
-        Assert.assertEquals(yesterday, String.format("%s", AgoTime.YESTERDAY));
+        Assert.assertEquals(yesterday, String.format("%s", FormatNames.YESTERDAY()));
 
         String twoDayAgo = PersianDT.Instance().Ago(getdateFrompass(-2), "{DATE}").format();
-        Assert.assertEquals(twoDayAgo, String.format("%d %s %s", 2, AgoFomat.day.getFormatname(), AgoTime.Extenion));
+        Assert.assertEquals(twoDayAgo, String.format("%d %s %s", 2, AgoFomat.day.getFormatname(), FormatNames.Extenion()));
 
         String oneMonthAgo = PersianDT.Instance().Ago(getdateFrompass(-31), "{DATE}").format();
-        Assert.assertEquals(oneMonthAgo, String.format("%d %s %s", 1, AgoFomat.month.getFormatname(), AgoTime.Extenion));
+        Assert.assertEquals(oneMonthAgo, String.format("%d %s %s", 1, AgoFomat.month.getFormatname(), FormatNames.Extenion()));
 
         String oneYearAgo = PersianDT.Instance().Ago(getdateFrompass(-365), "{DATE}").format();
-        Assert.assertEquals(oneYearAgo, String.format("%d %s %s", 1, AgoFomat.year.getFormatname(), AgoTime.Extenion));
+        Assert.assertEquals(oneYearAgo, String.format("%d %s %s", 1, AgoFomat.year.getFormatname(), FormatNames.Extenion()));
 
         String hour = PersianDT.Instance().Ago(getdateFrompass(0), "{DATE}").format();
-        Assert.assertEquals(hour, String.format("%d %s %s", 1, AgoFomat.hour.getFormatname(), AgoTime.Extenion ));
+        Assert.assertEquals(hour, String.format("%d %s %s", 1, AgoFomat.hour.getFormatname(), FormatNames.Extenion()));
 
 
 

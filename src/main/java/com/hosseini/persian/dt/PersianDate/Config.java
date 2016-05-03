@@ -17,9 +17,7 @@ package com.hosseini.persian.dt.PersianDate;
  * limitations under the License.
  */
 
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
-import com.hosseini.persian.dt.PersianDate.Iface.FindIt;
-
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,11 +32,11 @@ import java.util.regex.Pattern;
 
 public class Config implements FindIt {
 
-
     /**
      * assign constructor paratamter with this variable
      **/
     private final String dateContainStringObject, sentence;
+
     /**
      * CallBack Pattern
      * <p>
@@ -46,21 +44,34 @@ public class Config implements FindIt {
      * no need to create one any more nedd it use it
      * </p>
      */
-    CallBack callBack;
-    private Logger log = Logger.getLogger(getClass().getSimpleName());
-    private Date dateContainDateObject;
 
+    private final class DateHolder{
+
+
+        private final Date dateContainDateObject;
+
+        DateHolder(String date) throws ParseException {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            dateContainDateObject = dateFormat.parse(date);
+        }
+
+        public Date getDate(){
+            return dateContainDateObject;
+        }
+
+    }
+
+    private DateHolder holder;
+    private final Logger logger = Logger.getLogger(getClass().getSimpleName());
 
     Config(String date, String sentence) {
         this.dateContainStringObject = date;
         this.sentence = sentence;
 
-        SimpleDateFormat format
-                = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         try {
-            dateContainDateObject = format.parse(this.dateContainStringObject);
+            holder = new DateHolder(this.dateContainStringObject);
         } catch (ParseException e) {
-            log.warning("Check out maybe your date is not match the format");
+            logger.warning("maybe you date not really have correct format !!");
         }
     }
 
@@ -70,7 +81,7 @@ public class Config implements FindIt {
      * @return A Date
      */
     public Date getDateContaindateObject() {
-        return dateContainDateObject;
+        return holder.getDate();
     }
 
     /**

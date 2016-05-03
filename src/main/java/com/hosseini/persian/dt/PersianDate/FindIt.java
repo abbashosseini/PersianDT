@@ -1,4 +1,4 @@
-package com.hosseini.persian.dt.PersianDate.Iface;
+package com.hosseini.persian.dt.PersianDate;
 
 /*
  * Copyright (C) 2015 Abbashosseini

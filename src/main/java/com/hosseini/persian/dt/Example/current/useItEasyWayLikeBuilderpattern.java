@@ -1,7 +1,7 @@
 package com.hosseini.persian.dt.Example.current;
 
 import com.hosseini.persian.dt.PersianDT;
-import com.hosseini.persian.dt.PersianDate.Iface.CallBack;
+import com.hosseini.persian.dt.PersianDate.CallBack;
 
 import java.util.Date;
 
