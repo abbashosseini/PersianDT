@@ -1,16 +1,16 @@
 package com.hosseini.persian.dt.PersianDate;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 final class CallbackHolder{
 
-    private final CallBack callBack;
+    private final AtomicReference<CallBack> callBack = new AtomicReference<>();
 
     CallbackHolder(CallBack callBack){
-        this.callBack = callBack;
+        this.callBack.set(callBack);
     }
 
-    public final CallBack getCallBack(){
-        return callBack;
+    public synchronized CallBack getCallBack(){
+        return this.callBack.get();
     }
-
-
 }

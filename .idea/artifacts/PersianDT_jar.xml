@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PersianDT:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/PersianDT_jar</output-path>
-    <root id="archive" name="PersianDT.jar">
-      <element id="module-output" name="PersianDT" />
-    </root>
-  </artifact>
-</component>

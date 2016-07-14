@@ -49,8 +49,7 @@ public class PersianDT {
      * and make sure we have ust one instance out there
      * <p>
      **/
-    private PersianDT() {
-    }
+    private PersianDT() {}
 
     public static PersianDT Instance() {
 
@@ -117,6 +116,7 @@ public class PersianDT {
      */
 
     public Generate generate(String date, Object sentence) {
+
 
         if (sentence instanceof String)
             return new Generate(date, (String) sentence);

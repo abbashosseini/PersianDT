@@ -38,6 +38,7 @@ import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -51,9 +52,7 @@ public final class Generate extends Config {
      * we make it as Default format
      */
     private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private final Logger logger = Logger.getLogger(Generate.class.getSimpleName());
-    private final DateFormat dateFormat;
-    private CallbackHolder holder;
+    private static final ThreadLocal<CallbackHolder> holder = new ThreadLocal<>();
 
     /**
      * create persian date and can access it  as follow
@@ -62,20 +61,14 @@ public final class Generate extends Config {
      **/
     private final CCalender sc;
 
-    //maybe  user dont like default SEPARATOR so can change it with Separator(param)    //
+    //maybe  user don't like default SEPARATOR so can change it with Separator(param)
     private String SEPARATOR = " ";
 
     public Generate(String rawDate, String sentence) {
         super(rawDate, sentence);
-        dateFormat = new SimpleDateFormat(Format(""), Locale.ENGLISH);
-        Date date = null;
-        try {
-            date = dateFormat.parse(super.getDateContainStringObject());
-        } catch (ParseException ignored) {
-            logger.warning("check seem you pass date dont match the format, " +
-                    "please check what date and in what foemat you are pass ing to  " +
-                    "getDateContainStringObject() method in superclass (Config) ");
-        }
+
+        DateFormat dateFormat = new SimpleDateFormat(Format(""), Locale.ENGLISH);
+        Date date = dateFormat.parse(super.getDateContainStringObject(), new ParsePosition(0));
         sc = new CCalender(date);
     }
 
@@ -126,7 +119,9 @@ public final class Generate extends Config {
      * @return a formated String contain just digit
      */
     public String getWithFullDateInDigits() {
-        return String.format("%d%s%d%s%d", sc.getYear().get(), SEPARATOR, sc.getMonth().get(), SEPARATOR, sc.getDate().get());
+        return String.format(
+                "%d%s%d%s%d",
+                sc.getYear().get(), SEPARATOR, sc.getMonth().get(), SEPARATOR, sc.getDate().get());
     }
 
     /**
@@ -252,7 +247,7 @@ public final class Generate extends Config {
      */
 
     public Generate CallBack(CallBack callBack) {
-        holder = new CallbackHolder(callBack);
+        holder.set(new CallbackHolder(callBack));
         return this;
     }
 
@@ -270,7 +265,7 @@ public final class Generate extends Config {
     public void generateFullDate() {
 
         String date = super.Location(getWithFullDateInDigits());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 
@@ -287,7 +282,7 @@ public final class Generate extends Config {
     public void generateWithMonthName() {
 
         String date = super.Location(getWithMonthName());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 
@@ -304,7 +299,7 @@ public final class Generate extends Config {
     public void generateWithoutYear() {
 
         String date = super.Location(getMonthAndDay());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 }

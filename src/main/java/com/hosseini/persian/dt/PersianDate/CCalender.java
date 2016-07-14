@@ -1,5 +1,7 @@
 package com.hosseini.persian.dt.PersianDate;
 
+import java.lang.ref.ReferenceQueue;
+import java.nio.channels.AsynchronousChannel;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,19 +24,33 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 class CCalender {
 
-    private final AtomicInteger date = new AtomicInteger();
+    /*There are 3 parameters for a CAS operation: (Compare and Swap (Atomic))
+
+    1. A memory location V where value has to be replaced
+    2. Old value A which was read by thread last time
+    3. New value B which should be written over V*/
+
+    private final AtomicInteger date  = new AtomicInteger();
     private final AtomicInteger month = new AtomicInteger();
-    private final AtomicInteger year = new AtomicInteger();
+    private final AtomicInteger year  = new AtomicInteger();
+
+    //Thread Confinement
+    private static final ThreadLocal<Date> holder = new ThreadLocal<>();
+
+    private static final Calendar calendar        = Calendar.getInstance();
+
 
     /**
      * Constructs a new CCalendar.
      */
     public CCalender() {
-        CalendarCalc(new Date());
+        CalendarCalc(holder.get());
     }
 
-    protected CCalender(Date date) {
-        CalendarCalc(date);
+    protected CCalender(final Date date) {
+        //add new date object in ThreadLocal for later
+        holder.set(date);
+        CalendarCalc(holder.get());
     }
 
 
@@ -71,10 +87,11 @@ class CCalender {
         this.date.set(date);
     }
 
-    private void CalendarCalc(Date MiladiDate) {
+    private void CalendarCalc(Date d) {
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(MiladiDate);
+        holder.set(d);
+
+        calendar.setTime(holder.get());
 
         int ld;
         int miladiYear = calendar.get(Calendar.YEAR);

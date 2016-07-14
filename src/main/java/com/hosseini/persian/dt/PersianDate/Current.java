@@ -48,15 +48,15 @@ public final class Current extends Config {
      * just for return Names of the days of the week
      **/
     private static final String DEFAULT_FORMAT = "EEE";
-    private final Locale loc = new Locale("en_US");
-    private CallbackHolder holder;
+    private static final Locale loc = new Locale("en_US");
+    private static final ThreadLocal<CallbackHolder> holder = new ThreadLocal<>();
+
     /**
      * create persian date and can access it  as follow
      * {@code sc.year} and {@code sc.month} and {@code sc.date}
      * and  use it golbaly and ThreadSafe
      **/
     private final CCalender sc;
-    private Logger logger = Logger.getLogger(getClass().getSimpleName());
     //maybe  user dont like default SEPARATOR so can change it with Separator(param)
     private String SEPARATOR = " ";
 
@@ -240,7 +240,7 @@ public final class Current extends Config {
      */
 
     public Current CallBack(CallBack callBack) {
-        holder = new CallbackHolder(callBack);
+        holder.set(new CallbackHolder(callBack));
         return this;
 
     }
@@ -253,7 +253,7 @@ public final class Current extends Config {
 
         String date = super.Location(fullDigit());
         //fill callback
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 
@@ -264,7 +264,7 @@ public final class Current extends Config {
     public void WithMonthName() {
 
         String date = super.Location(DigitAndLetters());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 
@@ -275,7 +275,7 @@ public final class Current extends Config {
     public void WithoutYear() {
 
         String date = super.Location(MonthAndDay());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 }

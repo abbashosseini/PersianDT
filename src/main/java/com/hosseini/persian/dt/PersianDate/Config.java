@@ -18,10 +18,11 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 import java.text.DateFormat;
-import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,43 +37,12 @@ public class Config implements FindIt {
      * assign constructor paratamter with this variable
      **/
     private final String dateContainStringObject, sentence;
-
-    /**
-     * CallBack Pattern
-     * <p>
-     * this CallBack Here can you access it from subClasses
-     * no need to create one any more nedd it use it
-     * </p>
-     */
-
-    private final class DateHolder{
-
-
-        private final Date dateContainDateObject;
-
-        DateHolder(String date) throws ParseException {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-            dateContainDateObject = dateFormat.parse(date);
-        }
-
-        public Date getDate(){
-            return dateContainDateObject;
-        }
-
-    }
-
-    private DateHolder holder;
-    private final Logger logger = Logger.getLogger(getClass().getSimpleName());
+    private final DateHolder holder;
 
     Config(String date, String sentence) {
         this.dateContainStringObject = date;
         this.sentence = sentence;
-
-        try {
-            holder = new DateHolder(this.dateContainStringObject);
-        } catch (ParseException e) {
-            logger.warning("maybe you date not really have correct format !!");
-        }
+        holder = new DateHolder(this.dateContainStringObject);
     }
 
     /**
@@ -81,7 +51,7 @@ public class Config implements FindIt {
      * @return A Date
      */
     public Date getDateContaindateObject() {
-        return holder.getDate();
+        return holder.getGenerateDate();
     }
 
     /**
