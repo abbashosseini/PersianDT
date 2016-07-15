@@ -35,7 +35,7 @@ import java.text.ParseException;
 
 public final class AgoTime extends Config {
 
-    private CallbackHolder holder;
+    private final static ThreadLocal<CallbackHolder> holder = new ThreadLocal<>();
 
 
     public AgoTime(String date, String sentence){
@@ -166,7 +166,7 @@ public final class AgoTime extends Config {
      */
 
     public AgoTime CallBack(CallBack callBack) {
-        holder = new CallbackHolder(callBack);
+        holder.set(new CallbackHolder(callBack));
         return this;
     }
 
@@ -175,7 +175,7 @@ public final class AgoTime extends Config {
      **/
     public void parse() {
         String date = super.Location(format());
-        holder.getCallBack().onReceive(date);
+        holder.get().getCallBack().onReceive(date);
     }
 
 }

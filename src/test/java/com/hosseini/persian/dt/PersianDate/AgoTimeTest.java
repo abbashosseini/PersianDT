@@ -3,12 +3,13 @@ package com.hosseini.persian.dt.PersianDate;
 import com.hosseini.persian.dt.PersianDT;
 import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
 import junit.framework.TestCase;
-import org.junit.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Created by abbas on 4/9/16.
@@ -29,6 +30,7 @@ public class AgoTimeTest extends TestCase {
 
     }
 
+    @Test
     public void testFormat() throws Exception {
 
 
