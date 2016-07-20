@@ -38,9 +38,18 @@ import java.util.Locale;
  * @since 3/8/16
  */
 
-public class PersianDT {
+public enum  PersianDT {
 
-    private static PersianDT singleton;
+    /* Item 3:
+    Enforce the singleton property with a private
+    constructor or an enum type
+
+    <p>
+    a single-element enum type is the best way to implement a singleton
+    </p>
+    */
+
+    INSTANCE;
 
     /**
      * you can't instantiate PersianDT directly
@@ -49,18 +58,11 @@ public class PersianDT {
      * and make sure we have ust one instance out there
      * <p>
      **/
-    private PersianDT() {}
+    PersianDT() {}
 
-    public static PersianDT Instance() {
+    public synchronized static PersianDT Instance() {
 
-        if (singleton == null) {
-            synchronized (PersianDT.class) {
-                if (singleton == null) {
-                    singleton = new PersianDT();
-                }
-            }
-        }
-        return singleton;
+        return INSTANCE;
     }
 
     /**
@@ -83,7 +85,7 @@ public class PersianDT {
      * @param date
      *              get current date from the system
      */
-    public Current Current(Date date, Object sentence) {
+    public synchronized Current Current(final Date date, final Object sentence) {
 
         final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(date);
         if (sentence instanceof String)
@@ -91,7 +93,6 @@ public class PersianDT {
 
         else
             return new Current(formatDate, "");
-
 
     }
 
@@ -115,7 +116,8 @@ public class PersianDT {
      * @see Generate
      */
 
-    public Generate generate(String date, Object sentence) {
+    public synchronized Generate generate(final String date
+            , final Object sentence) {
 
 
         if (sentence instanceof String)
@@ -125,7 +127,8 @@ public class PersianDT {
             return new Generate(date, "");
     }
 
-    public Generate generate(Date date, Object sentence) {
+    public synchronized Generate generate(final Date date
+            , final Object sentence) {
 
         final String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(date);
 
@@ -155,7 +158,7 @@ public class PersianDT {
      * @see AgoTime
      */
 
-    public AgoTime Ago(String date, Object sentence) {
+    public synchronized AgoTime Ago(final String date, final Object sentence) {
 
         if (sentence instanceof String)
             return new AgoTime(date, (String) sentence);

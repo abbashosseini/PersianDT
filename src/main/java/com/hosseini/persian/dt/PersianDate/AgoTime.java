@@ -29,16 +29,7 @@ package com.hosseini.persian.dt.PersianDate;
  * @since 3/1/2016
  */
 
-import com.hosseini.persian.dt.PersianDate.annotation.Nickname;
 import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
-
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.FileTime;
-import java.text.ParseException;
 
 public final class AgoTime extends Config {
 
