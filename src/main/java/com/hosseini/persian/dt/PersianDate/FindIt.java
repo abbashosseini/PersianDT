@@ -26,5 +26,5 @@ package com.hosseini.persian.dt.PersianDate;
  */
 public interface FindIt {
 
-    String Location(String v);
+    String Location(String find);
 }

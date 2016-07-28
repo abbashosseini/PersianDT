@@ -1,8 +1,6 @@
-package com.hosseini.persian.dt.Example.generate;
+package Example.generate;
 
 import com.hosseini.persian.dt.PersianDT;
-import com.hosseini.persian.dt.PersianDate.Generate;
-import com.hosseini.persian.dt.PersianDate.CallBack;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;

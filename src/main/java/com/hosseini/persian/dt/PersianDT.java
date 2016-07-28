@@ -40,16 +40,16 @@ import java.util.Locale;
 
 public enum  PersianDT {
 
-    /* Item 3:
-    Enforce the singleton property with a private
-    constructor or an enum type
+    /*
 
     <p>
+    Enforce the singleton property with a private constructor or an enum type .
     a single-element enum type is the best way to implement a singleton
     </p>
     */
 
     INSTANCE;
+
 
     /**
      * you can't instantiate PersianDT directly
@@ -58,6 +58,7 @@ public enum  PersianDT {
      * and make sure we have ust one instance out there
      * <p>
      **/
+
     PersianDT() {}
 
     public synchronized static PersianDT Instance() {

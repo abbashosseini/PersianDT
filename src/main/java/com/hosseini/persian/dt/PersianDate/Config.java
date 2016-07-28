@@ -17,13 +17,7 @@ package com.hosseini.persian.dt.PersianDate;
  * limitations under the License.
  */
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,7 +45,7 @@ public class Config implements FindIt {
      * @return A Date
      */
     public Date getDateContaindateObject() {
-        return holder.getGenerateDate();
+        return new Date(holder.getGenerateDate().getTime());
     }
 
     /**

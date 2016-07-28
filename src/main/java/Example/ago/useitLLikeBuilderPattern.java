@@ -1,4 +1,4 @@
-package com.hosseini.persian.dt.Example.ago;
+package Example.ago;
 
 import com.hosseini.persian.dt.PersianDT;
 

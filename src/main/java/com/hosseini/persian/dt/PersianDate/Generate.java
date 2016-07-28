@@ -1,5 +1,15 @@
 package com.hosseini.persian.dt.PersianDate;
 
+import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
+import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 /*
  * Copyright (C) 2015 Abbashosseini
@@ -19,7 +29,7 @@ package com.hosseini.persian.dt.PersianDate;
 
 
 /**
- * Henerate Class
+ * Generate Class
  * <p>
  * This class provide generate persian date from given date and
  * you can customize your date any way you like and we make sure this
@@ -33,19 +43,10 @@ package com.hosseini.persian.dt.PersianDate;
  */
 
 
-import com.hosseini.persian.dt.PersianDate.enumCollections.Days;
-import com.hosseini.persian.dt.PersianDate.enumCollections.Months;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.logging.Logger;
+public final class Generate {
 
-public final class Generate extends Config {
+    private final Config config;
 
     /**
      * mostly we use Timestamp like date format so for easy and re-using
@@ -62,13 +63,14 @@ public final class Generate extends Config {
     private final CCalender sc;
 
     //maybe  user don't like default SEPARATOR so can change it with Separator(param)
-    private String SEPARATOR = " ";
+    private static String SEPARATOR = " ";
 
     public Generate(String rawDate, String sentence) {
-        super(rawDate, sentence);
+        config  = new Config(rawDate, sentence);
 
         DateFormat dateFormat = new SimpleDateFormat(Format(""), Locale.ENGLISH);
-        Date date = dateFormat.parse(super.getDateContainStringObject(), new ParsePosition(0));
+        Date date = dateFormat.parse(config.getDateContainStringObject(),
+                                                        new ParsePosition(0));
         sc = new CCalender(date);
     }
 
@@ -110,7 +112,7 @@ public final class Generate extends Config {
      * @param separator set your seperator you want between your dates
      * @return A Generate Class object
      */
-    public final Generate Separator(String separator) {
+    public Generate Separator(String separator) {
         SEPARATOR = separator;
         return this;
     }
@@ -183,10 +185,10 @@ public final class Generate extends Config {
         Date calendar = new Date();
         SimpleDateFormat JustDayofWeek = new SimpleDateFormat(Format("EEE"), Locale.ENGLISH);
 
-        if (!super.getDateContainStringObject().equals("")) {
+        if (!config.getDateContainStringObject().equals("")) {
             DateFormat format = new SimpleDateFormat(Format("yyyy-MM-dd HH:mm:ss"), Locale.ENGLISH);
             try {
-                calendar = format.parse(super.getDateContainStringObject());
+                calendar = format.parse(config.getDateContainStringObject());
             } catch (ParseException ignored) {
                 throw new IllegalAccessError("is Formatted as Date really ? ");
             }
@@ -264,7 +266,7 @@ public final class Generate extends Config {
 
     public void generateFullDate() {
 
-        String date = super.Location(getWithFullDateInDigits());
+        String date = config.Location(getWithFullDateInDigits());
         holder.get().getCallBack().onReceive(date);
     }
 
@@ -281,7 +283,7 @@ public final class Generate extends Config {
      */
     public void generateWithMonthName() {
 
-        String date = super.Location(getWithMonthName());
+        String date = config.Location(getWithMonthName());
         holder.get().getCallBack().onReceive(date);
     }
 
@@ -298,7 +300,7 @@ public final class Generate extends Config {
      */
     public void generateWithoutYear() {
 
-        String date = super.Location(getMonthAndDay());
+        String date = config.Location(getMonthAndDay());
         holder.get().getCallBack().onReceive(date);
     }
 

@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: com.hosseini.persian.dt.Example.current.useItEasyWayLikeBu
+Main-Class: Example.current.useItEasyWayLikeBu
  ilderpattern
 

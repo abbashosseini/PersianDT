@@ -2,9 +2,6 @@ package com.hosseini.persian.dt.PersianDate;
 
 import com.hosseini.persian.dt.PersianDate.enumCollections.AgoFomat;
 
-/**
- * Created by abbas on 4/28/16.
- */
 public class FormatNames {
 
     /**
@@ -58,5 +55,6 @@ public class FormatNames {
         return Extenion;
     }
 
+    private FormatNames(){}
 
 }

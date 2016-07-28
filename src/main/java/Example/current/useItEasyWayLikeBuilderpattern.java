@@ -1,10 +1,9 @@
-package com.hosseini.persian.dt.Example.current;
+package Example.current;
 
 import com.hosseini.persian.dt.PersianDT;
 import com.hosseini.persian.dt.PersianDate.CallBack;
 
 import java.util.Date;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * Created by abbas on 3/30/16.

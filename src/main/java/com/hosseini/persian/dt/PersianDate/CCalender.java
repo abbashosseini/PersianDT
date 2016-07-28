@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * limitations under the License.
  */
 
-class CCalender {
+final class CCalender {
 
     /*There are 3 parameters for a CAS operation: (Compare and Swap (Atomic))
 
@@ -33,24 +33,29 @@ class CCalender {
     private final AtomicInteger year  = new AtomicInteger();
 
     //Thread Confinement
-    private static final ThreadLocal<Date> holder = new ThreadLocal<>();
-
-    private static final Calendar calendar        = Calendar.getInstance();
+    private final ThreadLocal<Date> holder = new ThreadLocal<>();
+    private final ThreadLocal<Calendar> calendar = new ThreadLocal<>();
 
 
     /**
      * Constructs a new CCalendar.
      */
     public CCalender() {
-        CalendarCalc(holder.get());
+        this(new Date());
     }
 
-    protected CCalender(final Date date) {
-        //add new date object in ThreadLocal for later
-        holder.set(date);
-        CalendarCalc(holder.get());
-    }
+    protected CCalender(Date date) {
 
+        /*
+        * protect the mutable reference by defensive-copies
+        * */
+
+        holder.set(new Date(date.getTime()));
+        this.calendar.set(Calendar.getInstance());
+        CalendarCalc(holder.get());
+
+
+    }
 
     /**
      * Getter for property 'date'.
@@ -89,12 +94,12 @@ class CCalender {
 
         holder.set(d);
 
-        calendar.setTime(holder.get());
+        calendar.get().setTime(holder.get());
 
         int ld;
-        int miladiYear = calendar.get(Calendar.YEAR);
-        int miladiMonth = calendar.get(Calendar.MONTH) + 1;
-        int miladiDate = calendar.get(Calendar.DAY_OF_MONTH);
+        int miladiYear = calendar.get().get(Calendar.YEAR);
+        int miladiMonth = calendar.get().get(Calendar.MONTH) + 1;
+        int miladiDate = calendar.get().get(Calendar.DAY_OF_MONTH);
 
         int[] buf1 = new int[12];
         int[] buf2 = new int[12];

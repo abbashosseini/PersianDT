@@ -1,19 +1,18 @@
-package com.hosseini.persian.dt.Example.generate;
+package Example.generate;
 
 import com.hosseini.persian.dt.PersianDT;
 import com.hosseini.persian.dt.PersianDate.Generate;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.*;
 
 /**
  * Created by abbas on 3/30/16.
  */
-public class CustomDate {
+public class CustomDate{
 
     public static void main(String[] s) {
-
-
+        
         String format = format(Calendar.DATE, -7);
 
         // dot it separately

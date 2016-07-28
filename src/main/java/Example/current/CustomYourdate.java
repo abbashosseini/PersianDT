@@ -1,7 +1,6 @@
-package com.hosseini.persian.dt.Example.current;
+package Example.current;
 
 import com.hosseini.persian.dt.PersianDT;
-import com.hosseini.persian.dt.PersianDate.Current;
 import com.hosseini.persian.dt.PersianDate.Generate;
 
 import java.util.Date;
