@@ -6,8 +6,8 @@
 </p>
 
 
-####About
-persianDT its for persian guys WANT date in PERSIN LANGUAGE more readable and freindly and most important easy use 
+# About
+persianDT its for guys WANT date in PERSIN LANGUAGE more readable and freindly and most important easy use 
 generate and create such dates for them.
 you can access date in two ways :
 
@@ -20,7 +20,7 @@ and PersianDT is **ThreadSafe** and its build on top of 3 design pattern
 * Builder Pattern
 * Singleton Pattern
 
-###What can i do :
+# What can i do :
 
 * can create dates direclty from System 
 * can Create dates from Given date
@@ -34,7 +34,7 @@ and PersianDT is **ThreadSafe** and its build on top of 3 design pattern
 * can you create date in Ago Format like `2016 Apr 1` become `1 day ago`
 
 
-##Asynchronous Response :
+## Asynchronous Response :
 
 so if you wanna get reponse Asynchronous You have to use `CallBack Interface` and for using it you have to know how 
 in PersianDt you can fill and get response in couple of ways like :
@@ -131,7 +131,7 @@ in PersianDt you can fill and get response in couple of ways like :
      .Separator("--")
      .generateWithMonthName();
 ```
-you can see (BuilderPattern) Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/generate/useitLikeBuilderpattern.java) 
+you can see (BuilderPattern) Example in [here](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/Example/generate/useitLikeBuilderpattern.java) 
 
 #### what if i need day, month, year and more in _separate_ :
 
@@ -140,13 +140,13 @@ please check this [Example](https://github.com/abbashosseini/PersianDT/blob/mast
   
 #####you can use it to create appropriate instance :  
 
-   [Example 1- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/generate/CustomDate.java)
+   [Example 1- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/Example/generate/CustomDate.java)
    
-   [Example 2- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/current/CustomYourdate.java)
+   [Example 2- Customize your date](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/Example/current/CustomYourdate.java)
    
 #####Create date in Ago Format :
 
-[Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/com/hosseini/persian/dt/Example/ago/useitLLikeBuilderPattern.java)
+[Example 1- Ago Format](https://github.com/abbashosseini/PersianDT/blob/master/src/main/java/Example/ago/useitLLikeBuilderPattern.java)
 
 ## installing :
 
