@@ -8,15 +8,15 @@ public enum Months {
     /*
     * dont worry we just use values */
     Farvardin("فروردین", 1),
-    Ordibehesht("ارديبهشت", 2),
+    Ordibehesht("اردیبهشت", 2),
     Khordad("خرداد", 3),
-    tir("تير", 4),
+    tir("تیر", 4),
     Mordad("مرداد", 5),
-    shahrivar("شهريور", 6),
+    shahrivar("شهریور", 6),
     Mehr("مهر", 7),
     Aban("آبان", 8),
     Azar("آذر", 9),
-    Dy("دي", 10),
+    Dy("دی", 10),
     Bahman("بهمن", 11),
     Esfand("اسفند", 12);
 
